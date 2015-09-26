@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>凡凡你好 | miCookie</title>
+  <title>Linux中的alias使用 | miCookie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="测试">
+  <meta name="description" content="背景  alias即别名的意思。  举个栗子：比如说在Windows中查看ip是ipconfig，而Linux中是ifconfig，这样我们就可以设置一个ifconfig的别名为ipconfig，这样Linux中ipconfig就也实现ifconfig的功能了。  在终端中键入alias，可查看当前系统中启用的alias。![显示系统中启用的alias][1]  （PS：以前在用Centos和Ub">
 <meta property="og:type" content="article">
-<meta property="og:title" content="凡凡你好">
-<meta property="og:url" content="http://blog.micookie.net/2015/09/27/凡凡你好/index.html">
+<meta property="og:title" content="Linux中的alias使用">
+<meta property="og:url" content="http://blog.micookie.net/2015/09/26/First-Post/index.html">
 <meta property="og:site_name" content="miCookie">
-<meta property="og:description" content="测试">
-<meta property="og:updated_time" content="2015-09-26T06:16:16.691Z">
+<meta property="og:description" content="背景  alias即别名的意思。  举个栗子：比如说在Windows中查看ip是ipconfig，而Linux中是ifconfig，这样我们就可以设置一个ifconfig的别名为ipconfig，这样Linux中ipconfig就也实现ifconfig的功能了。  在终端中键入alias，可查看当前系统中启用的alias。![显示系统中启用的alias][1]  （PS：以前在用Centos和Ub">
+<meta property="og:updated_time" content="2015-09-26T10:09:09.967Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="凡凡你好">
-<meta name="twitter:description" content="测试">
+<meta name="twitter:title" content="Linux中的alias使用">
+<meta name="twitter:description" content="背景  alias即别名的意思。  举个栗子：比如说在Windows中查看ip是ipconfig，而Linux中是ifconfig，这样我们就可以设置一个ifconfig的别名为ipconfig，这样Linux中ipconfig就也实现ifconfig的功能了。  在终端中键入alias，可查看当前系统中启用的alias。![显示系统中启用的alias][1]  （PS：以前在用Centos和Ub">
   
     <link rel="alternative" href="/atom.xml" title="miCookie" type="application/atom+xml">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-凡凡你好" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-First-Post" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/09/27/凡凡你好/" class="article-date">
-  <time datetime="2015-09-26T19:02:18.000Z" itemprop="datePublished">2015-09-27</time>
+    <a href="/2015/09/26/First-Post/" class="article-date">
+  <time datetime="2015-09-26T10:09:09.967Z" itemprop="datePublished">2015-09-26</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      凡凡你好
+      Linux中的alias使用
     </h1>
   
 
@@ -90,23 +90,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="凡凡同学早上好！">凡凡同学早上好！</h2>
+        <h2 id="背景">背景</h2><p>  <code>alias</code>即别名的意思。<br>  举个栗子：比如说在Windows中查看ip是ipconfig，而Linux中是ifconfig，这样我们就可以设置一个ifconfig的别名为ipconfig，这样Linux中ipconfig就也实现ifconfig的功能了。<br>  在终端中键入alias，可查看当前系统中启用的alias。<br>![显示系统中启用的alias][1]<br>  <code>（PS：以前在用Centos和Ubuntu的时候就发现，在Centos中ll命令可以替代ls -l 然而在Ubuntu中不能使用，其实就是Centos中默认开启的ll的别名为ls -l）</code></p>
+<h2 id="alias存放位置">alias存放位置</h2><p>alias是在用户文件夹的配置文件下的.bashrc。</p>
+<pre><code><span class="title">vi</span> ~/.bashrc
+</code></pre><p>![alias配置文件]</p>
+<h2 id="alias语法规则">alias语法规则</h2><p>alias的语法规则很简洁，查看下配置文件一目了然，如上图。</p>
+<pre><code><span class="built_in">alias</span> 别名命令=<span class="string">'真实命令'</span>
+<span class="comment">#是注释</span>
+</code></pre><h2 id="如何生效">如何生效</h2><p>.bashrc文件是Linux的配置文件，修改之后不能需要重新加载才能生效。1、重启2、使用source重新加载</p>
+<pre><code><span class="built_in">source</span> ~/.bashrc
+</code></pre><p>即可。</p>
+<p> 快去亲自尝试一下吧。。。<br> <code>PS：我们可以将自己习惯的配置文件上传到github维护，如果以后更换电脑，可以很方便的取下来。</code></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.micookie.net/2015/09/27/凡凡你好/" data-id="cif0wqwhx0003wscvbwqg1nua" class="article-share-link">Share</a>
+      <a data-url="http://blog.micookie.net/2015/09/26/First-Post/" data-id="cif0wqwiq0008wscvil8jxetf" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/alias/">alias</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高效/">高效</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
+    <a href="/2015/09/27/凡凡你好/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          凡凡你好
+        
+      </div>
+    </a>
   
-    <a href="/2015/09/26/First-Post/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2015/09/26/page/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Linux中的alias使用</div>
+      <div class="article-nav-title">page</div>
     </a>
   
 </nav>
