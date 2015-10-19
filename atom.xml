@@ -4,7 +4,7 @@
   <subtitle><![CDATA[给我一个电脑，我能创造一个世界]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.micookie.net/"/>
-  <updated>2015-10-19T16:35:31.962Z</updated>
+  <updated>2015-10-19T16:46:22.160Z</updated>
   <id>http://blog.micookie.net/</id>
   
   <author>
@@ -15,14 +15,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title><![CDATA[Hexo添加RSS、Sitemap]]></title>
     <link href="http://blog.micookie.net/2015/10/20/Hexo%E6%B7%BB%E5%8A%A0RSS%E3%80%81Sitemap/"/>
     <id>http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/</id>
-    <published>2015-10-19T16:35:31.962Z</published>
-    <updated>2015-10-19T16:35:31.962Z</updated>
-    <content type="html"><![CDATA[<p>title: Hexo添加RSS、Sitemap<br>date: 2015-10-20 00:34:51<br>tags: hexo</p>
-<h2 id="折腾">折腾</h2><p>在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，</p>
-<pre><code>    $ npm <span class="keyword">install</span> hexo-generator-feed 
+    <published>2015-10-19T16:34:51.000Z</published>
+    <updated>2015-10-19T16:46:22.160Z</updated>
+    <content type="html"><![CDATA[<h2 id="折腾">折腾</h2><p>在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，</p>
+<pre><code>$ npm <span class="keyword">install</span> hexo-generator-feed 
 $ npm <span class="keyword">install</span> hexo-generator-sitemap
 </code></pre><p>但是我安装上之后始终还是显示：</p>
 <pre><code><span class="label">Cannot</span> <span class="preprocessor">GET</span> /atom.xml
@@ -31,7 +30,7 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
 <pre><code>plugins:
 -<span class="ruby"> hexo-generator-feed
 </span>-<span class="ruby"> hexo-generator-sitemap  </span>
-</code></pre><p>并没有任何效果，折腾了一晚上。<br>后来去Hexo插件官网看了下，安装的时候需要加上  –save参数。</p>
+</code></pre><p>并没有任何效果，折腾了一晚上。<br>后来去Hexo插件官网看了下，安装的时候需要加上  - -save参数。</p>
 <h2 id="路边的野花">路边的野花</h2><p>Hexo的插件储存目录在<code>node_modules</code>下，如果要卸载插件的话执行 </p>
 <pre><code>npm <span class="operator"><span class="keyword">uninstall</span> 包名 <span class="comment">--save</span></span>
 </code></pre><p>如果不加–save不会在<code>package.json</code>文件中修改</p>
@@ -58,10 +57,12 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>title: Hexo添加RSS、Sitemap<br>date: 2015-10-20 00:34:51<br>tags: hexo</p>
-<h2 id="折腾">折腾</h2><p>在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，</p>
-<pre><co]]>
+    <![CDATA[<h2 id="折腾">折腾</h2><p>在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，</p>
+<pre><code>$ npm <span class="keyword">install</span> hexo-generator-feed 
+$ npm <s]]>
     </summary>
+    
+      <category term="hexo" scheme="http://blog.micookie.net/tags/hexo/"/>
     
   </entry>
   

@@ -3,33 +3,42 @@
 <head>
   <meta charset="utf-8">
   
-  <title>miCookie</title>
+  <title>Hexo添加RSS、Sitemap | miCookie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: Hexo添加RSS、Sitemapdate: 2015-10-20 00:34:51tags: hexo
-折腾在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，
-    $ npm install hexo-generator-feed 
+  <meta name="description" content="折腾在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，
+$ npm install hexo-generator-feed 
 $ npm install hexo-generator-sitemap
 但是我安装上之后始终还是显示：
-Cannot GET /ato">
+Cannot GET /atom.xml
+Cannot GET /sitemap.xml
+有的教程还让在_config.yml文件中加入
+plugins:
+-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="miCookie">
+<meta property="og:title" content="Hexo添加RSS、Sitemap">
 <meta property="og:url" content="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/index.html">
 <meta property="og:site_name" content="miCookie">
-<meta property="og:description" content="title: Hexo添加RSS、Sitemapdate: 2015-10-20 00:34:51tags: hexo
-折腾在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，
-    $ npm install hexo-generator-feed 
+<meta property="og:description" content="折腾在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，
+$ npm install hexo-generator-feed 
 $ npm install hexo-generator-sitemap
 但是我安装上之后始终还是显示：
-Cannot GET /ato">
-<meta property="og:updated_time" content="2015-10-19T16:35:31.962Z">
+Cannot GET /atom.xml
+Cannot GET /sitemap.xml
+有的教程还让在_config.yml文件中加入
+plugins:
+-">
+<meta property="og:updated_time" content="2015-10-19T16:46:22.160Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="miCookie">
-<meta name="twitter:description" content="title: Hexo添加RSS、Sitemapdate: 2015-10-20 00:34:51tags: hexo
-折腾在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，
-    $ npm install hexo-generator-feed 
+<meta name="twitter:title" content="Hexo添加RSS、Sitemap">
+<meta name="twitter:description" content="折腾在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，
+$ npm install hexo-generator-feed 
 $ npm install hexo-generator-sitemap
 但是我安装上之后始终还是显示：
-Cannot GET /ato">
+Cannot GET /atom.xml
+Cannot GET /sitemap.xml
+有的教程还让在_config.yml文件中加入
+plugins:
+-">
   
     <link rel="alternative" href="/atom.xml" title="miCookie" type="application/atom+xml">
   
@@ -86,18 +95,27 @@ Cannot GET /ato">
         <section id="main"><article id="post-Hexo添加RSS、Sitemap" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/20/Hexo添加RSS、Sitemap/" class="article-date">
-  <time datetime="2015-10-19T16:35:31.962Z" itemprop="datePublished">2015-10-20</time>
+  <time datetime="2015-10-19T16:34:51.000Z" itemprop="datePublished">2015-10-20</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo添加RSS、Sitemap
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: Hexo添加RSS、Sitemap<br>date: 2015-10-20 00:34:51<br>tags: hexo</p>
-<h2 id="折腾">折腾</h2><p>在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，</p>
-<pre><code>    $ npm <span class="keyword">install</span> hexo-generator-feed 
+        <h2 id="折腾">折腾</h2><p>在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，</p>
+<pre><code>$ npm <span class="keyword">install</span> hexo-generator-feed 
 $ npm <span class="keyword">install</span> hexo-generator-sitemap
 </code></pre><p>但是我安装上之后始终还是显示：</p>
 <pre><code><span class="label">Cannot</span> <span class="preprocessor">GET</span> /atom.xml
@@ -106,7 +124,7 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
 <pre><code>plugins:
 -<span class="ruby"> hexo-generator-feed
 </span>-<span class="ruby"> hexo-generator-sitemap  </span>
-</code></pre><p>并没有任何效果，折腾了一晚上。<br>后来去Hexo插件官网看了下，安装的时候需要加上  –save参数。</p>
+</code></pre><p>并没有任何效果，折腾了一晚上。<br>后来去Hexo插件官网看了下，安装的时候需要加上  - -save参数。</p>
 <h2 id="路边的野花">路边的野花</h2><p>Hexo的插件储存目录在<code>node_modules</code>下，如果要卸载插件的话执行 </p>
 <pre><code>npm <span class="operator"><span class="keyword">uninstall</span> 包名 <span class="comment">--save</span></span>
 </code></pre><p>如果不加–save不会在<code>package.json</code>文件中修改</p>
@@ -135,9 +153,11 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/" data-id="cify60x4b000ci0cvtzocx8iq" class="article-share-link">Share</a>
+      <a data-url="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/" data-id="cify67kxi000cv8cv4zxovq7e" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
     </footer>
   </div>
   
@@ -172,7 +192,7 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alias/">alias</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高效/">高效</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alias/">alias</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高效/">高效</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -181,7 +201,7 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/alias/" style="font-size: 10px;">alias</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/高效/" style="font-size: 10px;">高效</a>
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/alias/" style="font-size: 10px;">alias</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/高效/" style="font-size: 10px;">高效</a>
     </div>
   </div>
 
@@ -202,7 +222,7 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
       <ul>
         
           <li>
-            <a href="/2015/10/20/Hexo添加RSS、Sitemap/">(no title)</a>
+            <a href="/2015/10/20/Hexo添加RSS、Sitemap/">Hexo添加RSS、Sitemap</a>
           </li>
         
           <li>
