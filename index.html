@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,15 +21,15 @@
   
     <link rel="icon" href="/favicon.png">
   
-  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
-
 </head>
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
+<div id="container">
+  <div id="wrap">
+    <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
@@ -61,13 +62,20 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.micookie.net"></form>
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="blog.micookie.net">
+        </form>
       </div>
     </div>
   </div>
 </header>
-      <div class="outer">
-        <section id="main">
+    <div class="outer">
+      <section id="main">
   
     <article id="post-关于Android拍照总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -101,8 +109,14 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.micookie.net/2015/10/22/关于Android拍照总结/" data-id="cig2d9jjc0000wccv2wfafpqm" class="article-share-link">Share</a>
       
+        <a data-url="http://blog.micookie.net/2015/10/22/关于Android拍照总结/" data-id="cig2f1wry0003p4cvufv78cjg" class="article-share-link" data-share="baidu" data-title="关于Android拍照总结">分享到</a>
+      
+
+      
+        <a href="http://blog.micookie.net/2015/10/22/关于Android拍照总结/#ds-thread" class="article-comment-link">评论</a>
+      
+
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拍照/">拍照</a></li></ul>
 
@@ -111,7 +125,7 @@
   
 </article>
 
- 
+
   
     <article id="post-Hexo添加RSS、Sitemap" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -145,40 +159,23 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
 </code></pre><p>但是我安装上之后始终还是显示：</p>
 <pre><code><span class="label">Cannot</span> <span class="preprocessor">GET</span> /atom.xml
 <span class="label">Cannot</span> <span class="preprocessor">GET</span> /sitemap.xml
-</code></pre><p>有的教程还让在_config.yml文件中加入</p>
-<pre><code>plugins:
--<span class="ruby"> hexo-generator-feed
-</span>-<span class="ruby"> hexo-generator-sitemap  </span>
-</code></pre><p>并没有任何效果，折腾了一晚上。<br>后来去Hexo插件官网看了下，安装的时候需要加上  - -save参数。</p>
-<h2 id="路边的野花">路边的野花</h2><p>Hexo的插件储存目录在<code>node_modules</code>下，如果要卸载插件的话执行 </p>
-<pre><code>npm <span class="operator"><span class="keyword">uninstall</span> 包名 <span class="comment">--save</span></span>
-</code></pre><p>如果不加–save不会在<code>package.json</code>文件中修改</p>
-<p><code>package.json</code>文件是Hexo插件的加载列表。</p>
-<h2 id="农村包围城市">农村包围城市</h2><p><a href="https://hexo.io/plugins/" target="_blank" rel="external">https://hexo.io/plugins/</a></p>
-<h2 id="1、hexo-generator-sitemap安装"><strong>1、hexo-generator-sitemap安装</strong></h2><h3 id="Install">Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Hexo 3: 1.x</li>
-<li>Hexo 2: 0.x<h3 id="Options">Options</h3>在 <code>_config.yml</code>.文件中添加</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sitemap:&#10;    path: sitemap.xml</span><br></pre></td></tr></table></figure>
-<h2 id="2、hexo-generator-feed安装"><strong>2、hexo-generator-feed安装</strong></h2><h3 id="Install-1">Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Hexo 3: 1.x</li>
-<li><p>Hexo 2: 0.x</p>
-<h3 id="Options-1">Options</h3><p>在 <code>_config.yml</code>文件中添加</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">feed:&#10;  type: atom&#10;  path: atom.xml&#10;  limit: 20</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>type</strong> - Feed type. (atom/rss2)</p>
-</li>
-<li><strong>path</strong> - Feed path. (Default: atom.xml/rss2.xml)</li>
-<li><strong>limit</strong> - Maximum number of posts in the feed (Use <code>0</code> or <code>false</code> to show all posts)</li>
-</ul>
-
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/20/Hexo添加RSS、Sitemap/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/" data-id="cig2d7vv3000cbocvuppay2ai" class="article-share-link">Share</a>
       
+        <a data-url="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/" data-id="cig2f1wsg000hp4cvj5tza2ag" class="article-share-link" data-share="baidu" data-title="Hexo添加RSS、Sitemap">分享到</a>
+      
+
+      
+        <a href="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/#ds-thread" class="article-comment-link">评论</a>
+      
+
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 
@@ -187,12 +184,12 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
   
 </article>
 
- 
+
   
     <article id="post-Eclipse中启动Genymotion报错" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/07/Eclipse中启动Genymotion报错/" class="article-date">
-  <time datetime="2015-10-07T15:22:54.924Z" itemprop="datePublished">2015-10-07</time>
+  <time datetime="2015-10-07T13:15:10.000Z" itemprop="datePublished">2015-10-07</time>
 </a>
     
   <div class="article-category">
@@ -219,15 +216,23 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
 Loading Genymotion library
 Genymotion directory: C:<span class="command">\Program</span> Files<span class="command">\Genymobile</span><span class="command">\Genymotion</span>
 Trying to initialize engine
-Exception (VBoxManage): java.io.IOException: Cannot run program "C:<span class="command">\Program</span> Files<span class="command">\Genymobile</span><span class="command">\Genymotion</span><span class="command">\/</span>reg": CreateProcess error=2, 系统找不到指定的文件。
+Exception (VBoxManage): java.io.IOException: Cannot run program 
+"C:<span class="command">\Program</span> Files<span class="command">\Genymobile</span><span class="command">\Genymotion</span><span class="command">\/</span>reg": CreateProcess error=2, 
+系统找不到指定的文件。
 Initialize Engine: failed
 </code></pre><p>是因为2.5.4版本的Genymotion没有提供reg.exe文件导致无法启动，可以安装2.5.3版本解决<br>2.5.3官方下载地址：<a href="http://files2.genymotion.com/genymotion/genymotion-2.5.3/genymotion-2.5.3.exe" target="_blank" rel="external">http://files2.genymotion.com/genymotion/genymotion-2.5.3/genymotion-2.5.3.exe</a><br>或者下载CSDN上传的包（通过2.5.3提取）<a href="http://download.csdn.net/detail/hdjdcyl/9161681" target="_blank" rel="external">http://download.csdn.net/detail/hdjdcyl/9161681</a>  复制到Genymotion的安装目录即可。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.micookie.net/2015/10/07/Eclipse中启动Genymotion报错/" data-id="cig2d7vva000hbocvjfcgj77w" class="article-share-link">Share</a>
       
+        <a data-url="http://blog.micookie.net/2015/10/07/Eclipse中启动Genymotion报错/" data-id="cig2f1wso000mp4cvfuofc5cx" class="article-share-link" data-share="baidu" data-title="Eclipse中启动Genymotion报错">分享到</a>
+      
+
+      
+        <a href="http://blog.micookie.net/2015/10/07/Eclipse中启动Genymotion报错/#ds-thread" class="article-comment-link">评论</a>
+      
+
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
@@ -236,12 +241,12 @@ Initialize Engine: failed
   
 </article>
 
- 
+
   
     <article id="post-Linux中的alias使用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/10/07/Linux中的alias使用/" class="article-date">
-  <time datetime="2015-10-07T07:07:01.252Z" itemprop="datePublished">2015-10-07</time>
+    <a href="/2015/04/22/Linux中的alias使用/" class="article-date">
+  <time datetime="2015-04-22T07:08:10.000Z" itemprop="datePublished">2015-04-22</time>
 </a>
     
   <div class="article-category">
@@ -256,7 +261,7 @@ Initialize Engine: failed
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/07/Linux中的alias使用/">Linux中的alias使用</a>
+      <a class="article-title" href="/2015/04/22/Linux中的alias使用/">Linux中的alias使用</a>
     </h1>
   
 
@@ -264,41 +269,41 @@ Initialize Engine: failed
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="背景">背景</h2><p>  <code>alias</code>即别名的意思。<br>  举个栗子：比如说在Windows中查看ip是ipconfig，而Linux中是ifconfig，这样我们就可以设置一个ifconfig的别名为ipconfig，这样Linux中ipconfig就也实现ifconfig的功能了。<br>  在终端中键入alias，可查看当前系统中启用的alias。<br>![显示系统中启用的alias][1]<br>  <code>（PS：以前在用Centos和Ubuntu的时候就发现，在Centos中ll命令可以替代ls -l 然而在Ubuntu中不能使用，其实就是Centos中默认开启的ll的别名为ls -l）</code></p>
-<h2 id="alias存放位置">alias存放位置</h2><p>alias是在用户文件夹的配置文件下的.bashrc。</p>
-<pre><code><span class="title">vi</span> ~/.bashrc
-</code></pre><p>![alias配置文件]</p>
-<h2 id="alias语法规则">alias语法规则</h2><p>alias的语法规则很简洁，查看下配置文件一目了然，如上图。</p>
-<pre><code><span class="built_in">alias</span> 别名命令=<span class="string">'真实命令'</span>
-<span class="comment">#是注释</span>
-</code></pre><h2 id="如何生效">如何生效</h2><p>.bashrc文件是Linux的配置文件，修改之后不能需要重新加载才能生效。1、重启2、使用source重新加载</p>
-<pre><code><span class="built_in">source</span> ~/.bashrc
-</code></pre><p>即可。</p>
-<p> 快去亲自尝试一下吧。。。<br> <code>PS：我们可以将自己习惯的配置文件上传到github维护，如果以后更换电脑，可以很方便的取下来。</code></p>
-
+        <h2 id="背景">背景</h2><p>  <code>alias</code>即别名的意思。<br>  举个栗子：比如说在Windows中查看ip是ipconfig，而Linux中是ifconfig，这样我们就可以设置一个ifconfig的别名为ipconfig，这样Linux中ipconfig就也实现ifconfig的功能了。<br>  在终端中键入alias，可查看当前系统中启用的alias。<br>![显示系统中启用的alias][1]<br>  <code>（PS：以前在用Centos和Ubuntu的时候就发现，在Centos中ll命令可以替代ls -l 然而在Ubuntu中不能使用，其实就是Centos中默认开启的ll的别名为ls -l）</code><br>
+        
+          <p class="article-more-link">
+            <a href="/2015/04/22/Linux中的alias使用/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.micookie.net/2015/10/07/Linux中的alias使用/" data-id="cig2d7vus0003bocvo525emeb" class="article-share-link">Share</a>
       
+        <a data-url="http://blog.micookie.net/2015/04/22/Linux中的alias使用/" data-id="cig2f1wsa0008p4cvmu41hrjc" class="article-share-link" data-share="baidu" data-title="Linux中的alias使用">分享到</a>
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/alias/">alias</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高效/">高效</a></li></ul>
+
+      
+        <a href="http://blog.micookie.net/2015/04/22/Linux中的alias使用/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/效率/">效率</a></li></ul>
 
     </footer>
   </div>
   
 </article>
 
- 
+
   
   
 </section>
-        
-          <aside id="sidebar">
+      
+      <aside id="sidebar">
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">分类</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维/">运维</a><span class="category-list-count">1</span></li></ul>
     </div>
@@ -307,34 +312,34 @@ Initialize Engine: failed
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alias/">alias</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拍照/">拍照</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高效/">高效</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拍照/">拍照</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/alias/" style="font-size: 10px;">alias</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/拍照/" style="font-size: 10px;">拍照</a> <a href="/tags/高效/" style="font-size: 10px;">高效</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/拍照/" style="font-size: 10px;">拍照</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recents</h3>
+    <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
         
@@ -351,7 +356,26 @@ Initialize Engine: failed
           </li>
         
           <li>
-            <a href="/2015/10/07/Linux中的alias使用/">Linux中的alias使用</a>
+            <a href="/2015/04/22/Linux中的alias使用/">Linux中的alias使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://www.roseboy.net" target="_blank">RoseBoy</a>
+          </li>
+        
+          <li>
+            <a href="http://blog.watsy0007.com" target="_blank">watsy0007</a>
           </li>
         
       </ul>
@@ -360,19 +384,21 @@ Initialize Engine: failed
 
   
 </aside>
-        
-      </div>
-      <footer id="footer">
+      
+    </div>
+    <footer id="footer">
   
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2015 miCookie<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
     </div>
   </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
+  </div>
+  <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">主页</a>
   
@@ -383,17 +409,63 @@ Initialize Engine: failed
     <a href="/guestbook" class="mobile-nav-link">留言</a>
   
 </nav>
-    
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
 
-<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"micookie"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//libs.useso.com/js/jquery/1.11.1/jquery.min.js"></script>
+
+
 
 
 <script src="/js/script.js" type="text/javascript"></script>
 
-  </div>
+</div>
 </body>
 </html>

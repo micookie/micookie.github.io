@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +11,7 @@ $ npm install hexo-generator-feed
 $ npm install hexo-generator-sitemap
 但是我安装上之后始终还是显示：
 Cannot GET /atom.xml
-Cannot GET /sitemap.xml
-有的教程还让在_config.yml文件中加入
-plugins:
--">
+Cannot GET /sitemap.xml">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo添加RSS、Sitemap">
 <meta property="og:url" content="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/index.html">
@@ -23,11 +21,8 @@ $ npm install hexo-generator-feed
 $ npm install hexo-generator-sitemap
 但是我安装上之后始终还是显示：
 Cannot GET /atom.xml
-Cannot GET /sitemap.xml
-有的教程还让在_config.yml文件中加入
-plugins:
--">
-<meta property="og:updated_time" content="2015-10-22T15:09:06.079Z">
+Cannot GET /sitemap.xml">
+<meta property="og:updated_time" content="2015-10-22T16:15:30.819Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo添加RSS、Sitemap">
 <meta name="twitter:description" content="折腾在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，
@@ -35,25 +30,22 @@ $ npm install hexo-generator-feed
 $ npm install hexo-generator-sitemap
 但是我安装上之后始终还是显示：
 Cannot GET /atom.xml
-Cannot GET /sitemap.xml
-有的教程还让在_config.yml文件中加入
-plugins:
--">
+Cannot GET /sitemap.xml">
   
     <link rel="alternative" href="/atom.xml" title="miCookie" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
-
 </head>
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
+<div id="container">
+  <div id="wrap">
+    <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
@@ -86,13 +78,20 @@ plugins:
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.micookie.net"></form>
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="blog.micookie.net">
+        </form>
       </div>
     </div>
   </div>
 </header>
-      <div class="outer">
-        <section id="main"><article id="post-Hexo添加RSS、Sitemap" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="outer">
+      <section id="main"><article id="post-Hexo添加RSS、Sitemap" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/20/Hexo添加RSS、Sitemap/" class="article-date">
   <time datetime="2015-10-19T16:34:51.000Z" itemprop="datePublished">2015-10-20</time>
@@ -124,16 +123,18 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
 </code></pre><p>但是我安装上之后始终还是显示：</p>
 <pre><code><span class="label">Cannot</span> <span class="preprocessor">GET</span> /atom.xml
 <span class="label">Cannot</span> <span class="preprocessor">GET</span> /sitemap.xml
-</code></pre><p>有的教程还让在_config.yml文件中加入</p>
+</code></pre><a id="more"></a>
+<p>有的教程还让在_config.yml文件中加入</p>
 <pre><code>plugins:
 -<span class="ruby"> hexo-generator-feed
 </span>-<span class="ruby"> hexo-generator-sitemap  </span>
-</code></pre><p>并没有任何效果，折腾了一晚上。<br>后来去Hexo插件官网看了下，安装的时候需要加上  - -save参数。</p>
-<h2 id="路边的野花">路边的野花</h2><p>Hexo的插件储存目录在<code>node_modules</code>下，如果要卸载插件的话执行 </p>
+</code></pre><p>并没有任何效果，折腾了一晚上。<br>后来去Hexo插件官网看了下，安装的时候需要加上  <code>- -save</code>参数。</p>
+<h2 id="意外收获">意外收获</h2><p>顺便简单看了下Hexo插件的位置，插件储存目录在<code>node_modules</code>下，如果要卸载插件的话执行 </p>
 <pre><code>npm <span class="operator"><span class="keyword">uninstall</span> 包名 <span class="comment">--save</span></span>
-</code></pre><p>如果不加–save不会在<code>package.json</code>文件中修改</p>
-<p><code>package.json</code>文件是Hexo插件的加载列表。</p>
-<h2 id="农村包围城市">农村包围城市</h2><p><a href="https://hexo.io/plugins/" target="_blank" rel="external">https://hexo.io/plugins/</a></p>
+</code></pre><p>并且在根目录下有个    <code>package.json</code> - -save参数就是将插件信息写入到这个配置文件中。</p>
+<p>Hexo启动的会读取<code>package.json</code> 中的插件列表。 </p>
+<p>之前的不能正常使用正是因为没有加上这个参数。卸载的时候同理 - - save，会删掉json的一条记录。</p>
+<h2 id="正确之路">正确之路</h2><p><a href="https://hexo.io/plugins/" target="_blank" rel="external">https://hexo.io/plugins/</a></p>
 <h2 id="1、hexo-generator-sitemap安装"><strong>1、hexo-generator-sitemap安装</strong></h2><h3 id="Install">Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Hexo 3: 1.x</li>
@@ -156,8 +157,14 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/" data-id="cig2d7vv3000cbocvuppay2ai" class="article-share-link">Share</a>
       
+        <a data-url="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/" data-id="cig2f1wsg000hp4cvj5tza2ag" class="article-share-link" data-share="baidu" data-title="Hexo添加RSS、Sitemap">分享到</a>
+      
+
+      
+        <a href="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/#ds-thread" class="article-comment-link">评论</a>
+      
+
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 
@@ -168,7 +175,7 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
 <nav id="article-nav">
   
     <a href="/2015/10/22/关于Android拍照总结/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
           关于Android拍照总结
@@ -178,7 +185,7 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
   
   
     <a href="/2015/10/07/Eclipse中启动Genymotion报错/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">Eclipse中启动Genymotion报错</div>
     </a>
   
@@ -187,13 +194,17 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
   
 </article>
 
- </section>
-        
-          <aside id="sidebar">
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/10/20/Hexo添加RSS、Sitemap/" data-title="Hexo添加RSS、Sitemap" data-url="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">分类</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维/">运维</a><span class="category-list-count">1</span></li></ul>
     </div>
@@ -202,34 +213,34 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alias/">alias</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拍照/">拍照</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高效/">高效</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拍照/">拍照</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/alias/" style="font-size: 10px;">alias</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/拍照/" style="font-size: 10px;">拍照</a> <a href="/tags/高效/" style="font-size: 10px;">高效</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/拍照/" style="font-size: 10px;">拍照</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recents</h3>
+    <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
         
@@ -246,7 +257,26 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
           </li>
         
           <li>
-            <a href="/2015/10/07/Linux中的alias使用/">Linux中的alias使用</a>
+            <a href="/2015/04/22/Linux中的alias使用/">Linux中的alias使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://www.roseboy.net" target="_blank">RoseBoy</a>
+          </li>
+        
+          <li>
+            <a href="http://blog.watsy0007.com" target="_blank">watsy0007</a>
           </li>
         
       </ul>
@@ -255,19 +285,21 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
 
   
 </aside>
-        
-      </div>
-      <footer id="footer">
+      
+    </div>
+    <footer id="footer">
   
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2015 miCookie<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
     </div>
   </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
+  </div>
+  <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">主页</a>
   
@@ -278,17 +310,63 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
     <a href="/guestbook" class="mobile-nav-link">留言</a>
   
 </nav>
-    
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
 
-<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"micookie"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//libs.useso.com/js/jquery/1.11.1/jquery.min.js"></script>
+
+
 
 
 <script src="/js/script.js" type="text/javascript"></script>
 
-  </div>
+</div>
 </body>
 </html>

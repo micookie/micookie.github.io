@@ -43,23 +43,25 @@
     <link href="http://blog.micookie.net/2015/10/20/Hexo%E6%B7%BB%E5%8A%A0RSS%E3%80%81Sitemap/"/>
     <id>http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/</id>
     <published>2015-10-19T16:34:51.000Z</published>
-    <updated>2015-10-22T15:09:06.079Z</updated>
+    <updated>2015-10-22T16:15:30.819Z</updated>
     <content type="html"><![CDATA[<h2 id="折腾">折腾</h2><p>在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，</p>
 <pre><code>$ npm <span class="keyword">install</span> hexo-generator-feed 
 $ npm <span class="keyword">install</span> hexo-generator-sitemap
 </code></pre><p>但是我安装上之后始终还是显示：</p>
 <pre><code><span class="label">Cannot</span> <span class="preprocessor">GET</span> /atom.xml
 <span class="label">Cannot</span> <span class="preprocessor">GET</span> /sitemap.xml
-</code></pre><p>有的教程还让在_config.yml文件中加入</p>
+</code></pre><a id="more"></a>
+<p>有的教程还让在_config.yml文件中加入</p>
 <pre><code>plugins:
 -<span class="ruby"> hexo-generator-feed
 </span>-<span class="ruby"> hexo-generator-sitemap  </span>
-</code></pre><p>并没有任何效果，折腾了一晚上。<br>后来去Hexo插件官网看了下，安装的时候需要加上  - -save参数。</p>
-<h2 id="路边的野花">路边的野花</h2><p>Hexo的插件储存目录在<code>node_modules</code>下，如果要卸载插件的话执行 </p>
+</code></pre><p>并没有任何效果，折腾了一晚上。<br>后来去Hexo插件官网看了下，安装的时候需要加上  <code>- -save</code>参数。</p>
+<h2 id="意外收获">意外收获</h2><p>顺便简单看了下Hexo插件的位置，插件储存目录在<code>node_modules</code>下，如果要卸载插件的话执行 </p>
 <pre><code>npm <span class="operator"><span class="keyword">uninstall</span> 包名 <span class="comment">--save</span></span>
-</code></pre><p>如果不加–save不会在<code>package.json</code>文件中修改</p>
-<p><code>package.json</code>文件是Hexo插件的加载列表。</p>
-<h2 id="农村包围城市">农村包围城市</h2><p><a href="https://hexo.io/plugins/" target="_blank" rel="external">https://hexo.io/plugins/</a></p>
+</code></pre><p>并且在根目录下有个    <code>package.json</code> - -save参数就是将插件信息写入到这个配置文件中。</p>
+<p>Hexo启动的会读取<code>package.json</code> 中的插件列表。 </p>
+<p>之前的不能正常使用正是因为没有加上这个参数。卸载的时候同理 - - save，会删掉json的一条记录。</p>
+<h2 id="正确之路">正确之路</h2><p><a href="https://hexo.io/plugins/" target="_blank" rel="external">https://hexo.io/plugins/</a></p>
 <h2 id="1、hexo-generator-sitemap安装"><strong>1、hexo-generator-sitemap安装</strong></h2><h3 id="Install">Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Hexo 3: 1.x</li>
@@ -82,7 +84,12 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
     <summary type="html">
     <![CDATA[<h2 id="折腾">折腾</h2><p>在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，</p>
 <pre><code>$ npm <span class="keyword">install</span> hexo-generator-feed 
-$ npm <s]]>
+$ npm <span class="keyword">install</span> hexo-generator-sitemap
+</code></pre><p>但是我安装上之后始终还是显示：</p>
+<pre><code><span class="label">Cannot</span> <span class="preprocessor">GET</span> /atom.xml
+<span class="label">Cannot</span> <span class="preprocessor">GET</span> /sitemap.xml
+</code></pre>]]>
+    
     </summary>
     
       <category term="hexo" scheme="http://blog.micookie.net/tags/hexo/"/>
@@ -95,13 +102,15 @@ $ npm <s]]>
     <title><![CDATA[Eclipse中启动Genymotion报错]]></title>
     <link href="http://blog.micookie.net/2015/10/07/Eclipse%E4%B8%AD%E5%90%AF%E5%8A%A8Genymotion%E6%8A%A5%E9%94%99/"/>
     <id>http://blog.micookie.net/2015/10/07/Eclipse中启动Genymotion报错/</id>
-    <published>2015-10-07T15:22:54.924Z</published>
-    <updated>2015-10-07T15:22:54.924Z</updated>
+    <published>2015-10-07T13:15:10.000Z</published>
+    <updated>2015-10-22T16:16:31.286Z</updated>
     <content type="html"><![CDATA[<h3 id="Eclipse装好Genymotion后点击启动按钮报如下错误">Eclipse装好Genymotion后点击启动按钮报如下错误</h3><pre><code>Output file: C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\.</span>genymotion-eclipse.log
 Loading Genymotion library
 Genymotion directory: C:<span class="command">\Program</span> Files<span class="command">\Genymobile</span><span class="command">\Genymotion</span>
 Trying to initialize engine
-Exception (VBoxManage): java.io.IOException: Cannot run program "C:<span class="command">\Program</span> Files<span class="command">\Genymobile</span><span class="command">\Genymotion</span><span class="command">\/</span>reg": CreateProcess error=2, 系统找不到指定的文件。
+Exception (VBoxManage): java.io.IOException: Cannot run program 
+"C:<span class="command">\Program</span> Files<span class="command">\Genymobile</span><span class="command">\Genymotion</span><span class="command">\/</span>reg": CreateProcess error=2, 
+系统找不到指定的文件。
 Initialize Engine: failed
 </code></pre><p>是因为2.5.4版本的Genymotion没有提供reg.exe文件导致无法启动，可以安装2.5.3版本解决<br>2.5.3官方下载地址：<a href="http://files2.genymotion.com/genymotion/genymotion-2.5.3/genymotion-2.5.3.exe" target="_blank" rel="external">http://files2.genymotion.com/genymotion/genymotion-2.5.3/genymotion-2.5.3.exe</a><br>或者下载CSDN上传的包（通过2.5.3提取）<a href="http://download.csdn.net/detail/hdjdcyl/9161681" target="_blank" rel="external">http://download.csdn.net/detail/hdjdcyl/9161681</a>  复制到Genymotion的安装目录即可。</p>
 ]]></content>
@@ -117,11 +126,11 @@ Initialize Engine: failed
   
   <entry>
     <title><![CDATA[Linux中的alias使用]]></title>
-    <link href="http://blog.micookie.net/2015/10/07/Linux%E4%B8%AD%E7%9A%84alias%E4%BD%BF%E7%94%A8/"/>
-    <id>http://blog.micookie.net/2015/10/07/Linux中的alias使用/</id>
-    <published>2015-10-07T07:07:01.252Z</published>
-    <updated>2015-10-07T07:07:01.252Z</updated>
-    <content type="html"><![CDATA[<h2 id="背景">背景</h2><p>  <code>alias</code>即别名的意思。<br>  举个栗子：比如说在Windows中查看ip是ipconfig，而Linux中是ifconfig，这样我们就可以设置一个ifconfig的别名为ipconfig，这样Linux中ipconfig就也实现ifconfig的功能了。<br>  在终端中键入alias，可查看当前系统中启用的alias。<br>![显示系统中启用的alias][1]<br>  <code>（PS：以前在用Centos和Ubuntu的时候就发现，在Centos中ll命令可以替代ls -l 然而在Ubuntu中不能使用，其实就是Centos中默认开启的ll的别名为ls -l）</code></p>
+    <link href="http://blog.micookie.net/2015/04/22/Linux%E4%B8%AD%E7%9A%84alias%E4%BD%BF%E7%94%A8/"/>
+    <id>http://blog.micookie.net/2015/04/22/Linux中的alias使用/</id>
+    <published>2015-04-22T07:08:10.000Z</published>
+    <updated>2015-10-22T16:18:04.883Z</updated>
+    <content type="html"><![CDATA[<h2 id="背景">背景</h2><p>  <code>alias</code>即别名的意思。<br>  举个栗子：比如说在Windows中查看ip是ipconfig，而Linux中是ifconfig，这样我们就可以设置一个ifconfig的别名为ipconfig，这样Linux中ipconfig就也实现ifconfig的功能了。<br>  在终端中键入alias，可查看当前系统中启用的alias。<br>![显示系统中启用的alias][1]<br>  <code>（PS：以前在用Centos和Ubuntu的时候就发现，在Centos中ll命令可以替代ls -l 然而在Ubuntu中不能使用，其实就是Centos中默认开启的ll的别名为ls -l）</code><br><a id="more"></a></p>
 <h2 id="alias存放位置">alias存放位置</h2><p>alias是在用户文件夹的配置文件下的.bashrc。</p>
 <pre><code><span class="title">vi</span> ~/.bashrc
 </code></pre><p>![alias配置文件]</p>
@@ -134,14 +143,13 @@ Initialize Engine: failed
 <p> 快去亲自尝试一下吧。。。<br> <code>PS：我们可以将自己习惯的配置文件上传到github维护，如果以后更换电脑，可以很方便的取下来。</code></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="背景">背景</h2><p>  <code>alias</code>即别名的意思。<br>  举个栗子：比如说在Windows中查看ip是ipconfig，而Linux中是ifconfig，这样我们就可以设置一个ifconfig的别名为ipconfig，这样Lin]]>
-    </summary>
+    <![CDATA[<h2 id="背景">背景</h2><p>  <code>alias</code>即别名的意思。<br>  举个栗子：比如说在Windows中查看ip是ipconfig，而Linux中是ifconfig，这样我们就可以设置一个ifconfig的别名为ipconfig，这样Linux中ipconfig就也实现ifconfig的功能了。<br>  在终端中键入alias，可查看当前系统中启用的alias。<br>![显示系统中启用的alias][1]<br>  <code>（PS：以前在用Centos和Ubuntu的时候就发现，在Centos中ll命令可以替代ls -l 然而在Ubuntu中不能使用，其实就是Centos中默认开启的ll的别名为ls -l）</code><br>]]>
     
-      <category term="alias" scheme="http://blog.micookie.net/tags/alias/"/>
+    </summary>
     
       <category term="linux" scheme="http://blog.micookie.net/tags/linux/"/>
     
-      <category term="高效" scheme="http://blog.micookie.net/tags/%E9%AB%98%E6%95%88/"/>
+      <category term="效率" scheme="http://blog.micookie.net/tags/%E6%95%88%E7%8E%87/"/>
     
       <category term="运维" scheme="http://blog.micookie.net/categories/%E8%BF%90%E7%BB%B4/"/>
     
