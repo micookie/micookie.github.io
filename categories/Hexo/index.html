@@ -3,17 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>tags | miCookie</title>
+  <title>Category: Hexo | miCookie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="给我一个电脑，我能创造一个世界">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://blog.micookie.net/tags/index.html">
+<meta property="og:title" content="miCookie">
+<meta property="og:url" content="http://blog.micookie.net/categories/Hexo/index.html">
 <meta property="og:site_name" content="miCookie">
 <meta property="og:description" content="给我一个电脑，我能创造一个世界">
-<meta property="og:updated_time" content="2015-09-26T07:35:49.336Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="miCookie">
 <meta name="twitter:description" content="给我一个电脑，我能创造一个世界">
   
     <link rel="alternative" href="/atom.xml" title="miCookie" type="application/atom+xml">
@@ -68,12 +67,18 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-Hexo添加RSS、Sitemap" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/tags/index.html" class="article-date">
-  <time datetime="2015-09-26T07:35:49.000Z" itemprop="datePublished">2015-09-26</time>
+    <a href="/2015/10/20/Hexo添加RSS、Sitemap/" class="article-date">
+  <time datetime="2015-10-19T16:34:51.000Z" itemprop="datePublished">2015-10-20</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -81,8 +86,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      tags
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/20/Hexo添加RSS、Sitemap/">Hexo添加RSS、Sitemap</a>
     </h1>
   
 
@@ -90,21 +95,58 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="折腾">折腾</h2><p>在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，</p>
+<pre><code>$ npm <span class="keyword">install</span> hexo-generator-feed 
+$ npm <span class="keyword">install</span> hexo-generator-sitemap
+</code></pre><p>但是我安装上之后始终还是显示：</p>
+<pre><code><span class="label">Cannot</span> <span class="preprocessor">GET</span> /atom.xml
+<span class="label">Cannot</span> <span class="preprocessor">GET</span> /sitemap.xml
+</code></pre><p>有的教程还让在_config.yml文件中加入</p>
+<pre><code>plugins:
+-<span class="ruby"> hexo-generator-feed
+</span>-<span class="ruby"> hexo-generator-sitemap  </span>
+</code></pre><p>并没有任何效果，折腾了一晚上。<br>后来去Hexo插件官网看了下，安装的时候需要加上  - -save参数。</p>
+<h2 id="路边的野花">路边的野花</h2><p>Hexo的插件储存目录在<code>node_modules</code>下，如果要卸载插件的话执行 </p>
+<pre><code>npm <span class="operator"><span class="keyword">uninstall</span> 包名 <span class="comment">--save</span></span>
+</code></pre><p>如果不加–save不会在<code>package.json</code>文件中修改</p>
+<p><code>package.json</code>文件是Hexo插件的加载列表。</p>
+<h2 id="农村包围城市">农村包围城市</h2><p><a href="https://hexo.io/plugins/" target="_blank" rel="external">https://hexo.io/plugins/</a></p>
+<h2 id="1、hexo-generator-sitemap安装"><strong>1、hexo-generator-sitemap安装</strong></h2><h3 id="Install">Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Hexo 3: 1.x</li>
+<li>Hexo 2: 0.x<h3 id="Options">Options</h3>在 <code>_config.yml</code>.文件中添加</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sitemap:&#10;    path: sitemap.xml</span><br></pre></td></tr></table></figure>
+<h2 id="2、hexo-generator-feed安装"><strong>2、hexo-generator-feed安装</strong></h2><h3 id="Install-1">Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Hexo 3: 1.x</li>
+<li><p>Hexo 2: 0.x</p>
+<h3 id="Options-1">Options</h3><p>在 <code>_config.yml</code>文件中添加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">feed:&#10;  type: atom&#10;  path: atom.xml&#10;  limit: 20</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>type</strong> - Feed type. (atom/rss2)</p>
+</li>
+<li><strong>path</strong> - Feed path. (Default: atom.xml/rss2.xml)</li>
+<li><strong>limit</strong> - Maximum number of posts in the feed (Use <code>0</code> or <code>false</code> to show all posts)</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.micookie.net/tags/index.html" data-id="cig2d7vt30000bocvao9dyg0u" class="article-share-link">Share</a>
+      <a data-url="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/" data-id="cig2d7vv3000cbocvuppay2ai" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
     </footer>
   </div>
   
-    
-  
 </article>
 
- </section>
+ 
+  
+  
+</section>
         
           <aside id="sidebar">
   

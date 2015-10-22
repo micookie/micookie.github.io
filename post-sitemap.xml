@@ -7,8 +7,15 @@
     </url>
 
     <url>
+        <loc>http://blog.micookie.net/2015/10/22/%E5%85%B3%E4%BA%8EAndroid%E6%8B%8D%E7%85%A7%E6%80%BB%E7%BB%93/</loc>
+        <lastmod>2015-10-22T15:11:17.976Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
         <loc>http://blog.micookie.net/2015/10/20/Hexo%E6%B7%BB%E5%8A%A0RSS%E3%80%81Sitemap/</loc>
-        <lastmod>2015-10-19T16:49:16.320Z</lastmod>
+        <lastmod>2015-10-22T15:09:06.079Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>

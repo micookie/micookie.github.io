@@ -4,7 +4,7 @@
   <subtitle><![CDATA[给我一个电脑，我能创造一个世界]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.micookie.net/"/>
-  <updated>2015-10-19T16:49:16.320Z</updated>
+  <updated>2015-10-22T15:11:17.976Z</updated>
   <id>http://blog.micookie.net/</id>
   
   <author>
@@ -15,11 +15,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[关于Android拍照总结]]></title>
+    <link href="http://blog.micookie.net/2015/10/22/%E5%85%B3%E4%BA%8EAndroid%E6%8B%8D%E7%85%A7%E6%80%BB%E7%BB%93/"/>
+    <id>http://blog.micookie.net/2015/10/22/关于Android拍照总结/</id>
+    <published>2015-10-22T15:08:10.000Z</published>
+    <updated>2015-10-22T15:11:17.976Z</updated>
+    <content type="html"><![CDATA[<p>网上搜拍照程序千篇一律，倒是都能正常的使用，但是很多问题存在，比如说拍照模糊……但是有人留言但是博主又不回复，总结了一下有这两种情况分别说明一下。</p>
+<h3 id="第一种通过URI_putextra">第一种通过URI  putextra</h3><pre><code>如果采用这种<span class="type">ResultActivity</span>中返回的<span class="typedef"><span class="keyword">data</span>为</span>
+</code></pre><h3 id="第二种通过Intent">第二种通过Intent</h3><pre><code>其实是缩略图
+
+
+待续。。。
+</code></pre>]]></content>
+    <summary type="html">
+    <![CDATA[<p>网上搜拍照程序千篇一律，倒是都能正常的使用，但是很多问题存在，比如说拍照模糊……但是有人留言但是博主又不回复，总结了一下有这两种情况分别说明一下。</p>
+<h3 id="第一种通过URI_putextra">第一种通过URI  putextra</h3><pre><cod]]>
+    </summary>
+    
+      <category term="Android" scheme="http://blog.micookie.net/tags/Android/"/>
+    
+      <category term="拍照" scheme="http://blog.micookie.net/tags/%E6%8B%8D%E7%85%A7/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Hexo添加RSS、Sitemap]]></title>
     <link href="http://blog.micookie.net/2015/10/20/Hexo%E6%B7%BB%E5%8A%A0RSS%E3%80%81Sitemap/"/>
     <id>http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/</id>
     <published>2015-10-19T16:34:51.000Z</published>
-    <updated>2015-10-19T16:49:16.320Z</updated>
+    <updated>2015-10-22T15:09:06.079Z</updated>
     <content type="html"><![CDATA[<h2 id="折腾">折腾</h2><p>在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，</p>
 <pre><code>$ npm <span class="keyword">install</span> hexo-generator-feed 
 $ npm <span class="keyword">install</span> hexo-generator-sitemap
@@ -62,6 +86,8 @@ $ npm <s]]>
     </summary>
     
       <category term="hexo" scheme="http://blog.micookie.net/tags/hexo/"/>
+    
+      <category term="Hexo" scheme="http://blog.micookie.net/categories/Hexo/"/>
     
   </entry>
   
