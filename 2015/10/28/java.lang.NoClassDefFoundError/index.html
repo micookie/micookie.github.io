@@ -4,17 +4,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: linux | miCookie</title>
+  <title>java.lang.NoClassDefFoundError | miCookie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="给我一个电脑，我能创造一个世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="miCookie">
-<meta property="og:url" content="http://blog.micookie.net/tags/linux/index.html">
+  <meta name="description" content="一个项目中要实现查看手机自定义文件夹下的照片功能，于是在github找到了ImageChooser这个项目，但是我导入到Eclipse之后，出现了编译，安装成功，在手机运行的时候报如下错误：
+java.lang.NoClassDefFoundError: Failed   resolution of:Lcom/nostra13/universalimageloader/core/ImageLoad">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java.lang.NoClassDefFoundError">
+<meta property="og:url" content="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/index.html">
 <meta property="og:site_name" content="miCookie">
-<meta property="og:description" content="给我一个电脑，我能创造一个世界">
+<meta property="og:description" content="一个项目中要实现查看手机自定义文件夹下的照片功能，于是在github找到了ImageChooser这个项目，但是我导入到Eclipse之后，出现了编译，安装成功，在手机运行的时候报如下错误：
+java.lang.NoClassDefFoundError: Failed   resolution of:Lcom/nostra13/universalimageloader/core/ImageLoad">
+<meta property="og:updated_time" content="2015-10-28T14:24:57.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="miCookie">
-<meta name="twitter:description" content="给我一个电脑，我能创造一个世界">
+<meta name="twitter:title" content="java.lang.NoClassDefFoundError">
+<meta name="twitter:description" content="一个项目中要实现查看手机自定义文件夹下的照片功能，于是在github找到了ImageChooser这个项目，但是我导入到Eclipse之后，出现了编译，安装成功，在手机运行的时候报如下错误：
+java.lang.NoClassDefFoundError: Failed   resolution of:Lcom/nostra13/universalimageloader/core/ImageLoad">
   
     <link rel="alternative" href="/atom.xml" title="miCookie" type="application/atom+xml">
   
@@ -75,18 +79,12 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-    <article id="post-Linux中的alias使用" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-java.lang.NoClassDefFoundError" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/04/22/Linux中的alias使用/" class="article-date">
-  <time datetime="2015-04-22T07:08:10.000Z" itemprop="datePublished">2015-04-22</time>
+    <a href="/2015/10/28/java.lang.NoClassDefFoundError/" class="article-date">
+  <time datetime="2015-10-28T13:53:10.000Z" itemprop="datePublished">2015-10-28</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/运维/">运维</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -94,8 +92,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/22/Linux中的alias使用/">Linux中的alias使用</a>
+    <h1 class="article-title" itemprop="name">
+      java.lang.NoClassDefFoundError
     </h1>
   
 
@@ -103,34 +101,53 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="背景">背景</h2><p>  <code>alias</code>即别名的意思。<br>  举个栗子：比如说在Windows中查看ip是ipconfig，而Linux中是ifconfig，这样我们就可以设置一个ifconfig的别名为ipconfig，这样Linux中ipconfig就也实现ifconfig的功能了。<br>  在终端中键入alias，可查看当前系统中启用的alias。<br>![显示系统中启用的alias][1]<br>  <code>（PS：以前在用Centos和Ubuntu的时候就发现，在Centos中ll命令可以替代ls -l 然而在Ubuntu中不能使用，其实就是Centos中默认开启的ll的别名为ls -l）</code><br>
-        
-          <p class="article-more-link">
-            <a href="/2015/04/22/Linux中的alias使用/#more">阅读全文</a>
-          </p>
-        
+        <p>一个项目中要实现查看手机自定义文件夹下的照片功能，于是在github找到了<a href="https://github.com/likebamboo/ImageChooser" target="_blank" rel="external">ImageChooser</a>这个项目，但是我导入到Eclipse之后，出现了编译，安装成功，在手机运行的时候报如下错误：</p>
+<pre><code>java.lang.NoClassDefFoundError: Failed   resolution of:Lcom/nostra13/universalimageloader/core/ImageLoaderConfiguration<span class="variable">$Builder</span>;
+</code></pre><p>universalimageloader是该程序中用的一个jar包，不知道为何前边为Lcom，感觉应该是com才对。</p>
+<p>然后把项目导入到AndroidStudio中发现编译后的apk是可以正常使用的说明源码没问题。</p>
+<p>折腾了好久无奈，发给朋友他在Eclipse下，编译后是没问题的，于是让他把他的项目打包发给我，我导入后发现也正常了。</p>
+<p>只好用Beyond Compare来比较我的项目和他的项目文件的区别，发现唯一的区别在项目根目录下的<code>.classpath</code>文件</p>
+<p>不正常的：</p>
+<pre><code><span class="tag">&lt;<span class="title">classpathentry</span> <span class="attribute">kind</span>=<span class="value">"con"</span> <span class="attribute">path</span>=<span class="value">"com.android.ide.eclipse.adt.LIBRARIES"</span>&gt;</span>
+</code></pre><p>正常运行的：</p>
+<pre><code><span class="tag">&lt;<span class="title">classpathentry</span> <span class="attribute">kind</span>=<span class="value">"con"</span> <span class="attribute">exported</span>=<span class="value">"true"</span> <span class="attribute">path</span>=<span class="value">"com.android.ide.eclipse.adt.LIBRARIES"</span>&gt;</span>
+</code></pre><p>就是这个参数的问题 <code>exported=&quot;true&quot;</code> 表示是否允许调用libs的jar包。<br>貌似是我adt版本的导致碰到这个问题。</p>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/04/22/Linux中的alias使用/" data-id="cigauu4nj0008w4cvhdw3v2fs" class="article-share-link" data-share="baidu" data-title="Linux中的alias使用">分享到</a>
+        <a data-url="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/" data-id="cigaw9qxy00001gcvjbb2p3pq" class="article-share-link" data-share="baidu" data-title="java.lang.NoClassDefFoundError">分享到</a>
       
 
       
-        <a href="http://blog.micookie.net/2015/04/22/Linux中的alias使用/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/效率/">效率</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>
   
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/10/22/关于Android拍照总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">关于Android拍照总结</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
-  
-  
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/10/28/java.lang.NoClassDefFoundError/" data-title="java.lang.NoClassDefFoundError" data-url="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/"></div>
+  </section>
 </section>
       
       <aside id="sidebar">
