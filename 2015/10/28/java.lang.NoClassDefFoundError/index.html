@@ -14,7 +14,7 @@ java.lang.NoClassDefFoundError: Failed   resolution of:Lcom/nostra13/universalim
 <meta property="og:site_name" content="miCookie">
 <meta property="og:description" content="一个项目中要实现查看手机自定义文件夹下的照片功能，于是在github找到了ImageChooser这个项目，但是我导入到Eclipse之后，出现了编译，安装成功，在手机运行的时候报如下错误：
 java.lang.NoClassDefFoundError: Failed   resolution of:Lcom/nostra13/universalimageloader/core/ImageLoad">
-<meta property="og:updated_time" content="2015-10-28T14:24:57.351Z">
+<meta property="og:updated_time" content="2015-10-28T14:31:15.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java.lang.NoClassDefFoundError">
 <meta name="twitter:description" content="一个项目中要实现查看手机自定义文件夹下的照片功能，于是在github找到了ImageChooser这个项目，但是我导入到Eclipse之后，出现了编译，安装成功，在手机运行的时候报如下错误：
@@ -103,7 +103,8 @@ java.lang.NoClassDefFoundError: Failed   resolution of:Lcom/nostra13/universalim
       
         <p>一个项目中要实现查看手机自定义文件夹下的照片功能，于是在github找到了<a href="https://github.com/likebamboo/ImageChooser" target="_blank" rel="external">ImageChooser</a>这个项目，但是我导入到Eclipse之后，出现了编译，安装成功，在手机运行的时候报如下错误：</p>
 <pre><code>java.lang.NoClassDefFoundError: Failed   resolution of:Lcom/nostra13/universalimageloader/core/ImageLoaderConfiguration<span class="variable">$Builder</span>;
-</code></pre><p>universalimageloader是该程序中用的一个jar包，不知道为何前边为Lcom，感觉应该是com才对。</p>
+</code></pre><a id="more"></a>
+<p>universalimageloader是该程序中用的一个jar包，不知道为何前边为Lcom，感觉应该是com才对。</p>
 <p>然后把项目导入到AndroidStudio中发现编译后的apk是可以正常使用的说明源码没问题。</p>
 <p>折腾了好久无奈，发给朋友他在Eclipse下，编译后是没问题的，于是让他把他的项目打包发给我，我导入后发现也正常了。</p>
 <p>只好用Beyond Compare来比较我的项目和他的项目文件的区别，发现唯一的区别在项目根目录下的<code>.classpath</code>文件</p>
@@ -117,7 +118,7 @@ java.lang.NoClassDefFoundError: Failed   resolution of:Lcom/nostra13/universalim
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/" data-id="cigaw9qxy00001gcvjbb2p3pq" class="article-share-link" data-share="baidu" data-title="java.lang.NoClassDefFoundError">分享到</a>
+        <a data-url="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/" data-id="cigawhmz30008iscvkfmfx8b1" class="article-share-link" data-share="baidu" data-title="java.lang.NoClassDefFoundError">分享到</a>
       
 
       

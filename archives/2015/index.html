@@ -99,23 +99,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一个项目中要实现查看手机自定义文件夹下的照片功能，于是在github找到了<a href="https://github.com/likebamboo/ImageChooser" target="_blank" rel="external">ImageChooser</a>这个项目，但是我导入到Eclipse之后，出现了编译，安装成功，在手机运行的时候报如下错误：</p>
+        <p>一个项目中要实现查看手机自定义文件夹下的照片功能，于是在github找到了<a href="https://github.com/likebamboo/ImageChooser">ImageChooser</a>这个项目，但是我导入到Eclipse之后，出现了编译，安装成功，在手机运行的时候报如下错误：</p>
 <pre><code>java.lang.NoClassDefFoundError: Failed   resolution of:Lcom/nostra13/universalimageloader/core/ImageLoaderConfiguration<span class="variable">$Builder</span>;
-</code></pre><p>universalimageloader是该程序中用的一个jar包，不知道为何前边为Lcom，感觉应该是com才对。</p>
-<p>然后把项目导入到AndroidStudio中发现编译后的apk是可以正常使用的说明源码没问题。</p>
-<p>折腾了好久无奈，发给朋友他在Eclipse下，编译后是没问题的，于是让他把他的项目打包发给我，我导入后发现也正常了。</p>
-<p>只好用Beyond Compare来比较我的项目和他的项目文件的区别，发现唯一的区别在项目根目录下的<code>.classpath</code>文件</p>
-<p>不正常的：</p>
-<pre><code><span class="tag">&lt;<span class="title">classpathentry</span> <span class="attribute">kind</span>=<span class="value">"con"</span> <span class="attribute">path</span>=<span class="value">"com.android.ide.eclipse.adt.LIBRARIES"</span>&gt;</span>
-</code></pre><p>正常运行的：</p>
-<pre><code><span class="tag">&lt;<span class="title">classpathentry</span> <span class="attribute">kind</span>=<span class="value">"con"</span> <span class="attribute">exported</span>=<span class="value">"true"</span> <span class="attribute">path</span>=<span class="value">"com.android.ide.eclipse.adt.LIBRARIES"</span>&gt;</span>
-</code></pre><p>就是这个参数的问题 <code>exported=&quot;true&quot;</code> 表示是否允许调用libs的jar包。<br>貌似是我adt版本的导致碰到这个问题。</p>
-
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/28/java.lang.NoClassDefFoundError/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/" data-id="cigaw9qxy00001gcvjbb2p3pq" class="article-share-link" data-share="baidu" data-title="java.lang.NoClassDefFoundError">分享到</a>
+        <a data-url="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/" data-id="cigawhmz30008iscvkfmfx8b1" class="article-share-link" data-share="baidu" data-title="java.lang.NoClassDefFoundError">分享到</a>
       
 
       
@@ -165,7 +161,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/10/22/关于Android拍照总结/" data-id="cigauu4mx0003w4cv66yx0ad5" class="article-share-link" data-share="baidu" data-title="关于Android拍照总结">分享到</a>
+        <a data-url="http://blog.micookie.net/2015/10/22/关于Android拍照总结/" data-id="cigawhmys0003iscvrkqe5ieo" class="article-share-link" data-share="baidu" data-title="关于Android拍照总结">分享到</a>
       
 
       
@@ -224,7 +220,7 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/" data-id="cigauu4nj000fw4cv1ntea2z2" class="article-share-link" data-share="baidu" data-title="Hexo添加RSS、Sitemap">分享到</a>
+        <a data-url="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/" data-id="cigawhmze000hiscvrh6wabiu" class="article-share-link" data-share="baidu" data-title="Hexo添加RSS、Sitemap">分享到</a>
       
 
       
@@ -281,7 +277,7 @@ Initialize Engine: failed
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/10/07/Eclipse中启动Genymotion报错/" data-id="cigauu4nj000kw4cvnivklsd4" class="article-share-link" data-share="baidu" data-title="Eclipse中启动Genymotion报错">分享到</a>
+        <a data-url="http://blog.micookie.net/2015/10/07/Eclipse中启动Genymotion报错/" data-id="cigawhmzj000miscvbajfyxun" class="article-share-link" data-share="baidu" data-title="Eclipse中启动Genymotion报错">分享到</a>
       
 
       
@@ -334,7 +330,7 @@ Initialize Engine: failed
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/04/22/Linux中的alias使用/" data-id="cigauu4nj0008w4cvhdw3v2fs" class="article-share-link" data-share="baidu" data-title="Linux中的alias使用">分享到</a>
+        <a data-url="http://blog.micookie.net/2015/04/22/Linux中的alias使用/" data-id="cigawhmz7000aiscvgmqlwfv4" class="article-share-link" data-share="baidu" data-title="Linux中的alias使用">分享到</a>
       
 
       
