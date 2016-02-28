@@ -77,12 +77,81 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Android媒体库更新" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/01/Android媒体库更新/" class="article-date">
+  <time datetime="2015-11-01T09:59:41.000Z" itemprop="datePublished">2015-11-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Adroid/">Adroid</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/01/Android媒体库更新/">Android媒体库修改</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>因为照片是直接通过Java的File文件系统删除的，删除的时候并不会通知Android的媒体库进行更新数据库。数据库位置<code>/data/data/com.android.providers.media/</code>下的数据库，root后的手机可以通过RE管理的查看，image表中。<br>如下代码可以实现清理数据库的功能。</p>
+<pre><code><span class="keyword">private</span> <span class="keyword">void</span> clearMediaDatabase() {
+    String[] projection = { MediaStore.Images.Media._ID, MediaStore.Images.Media.DATA, MediaStore.Images.ImageColumns.DATA };
+    ContentResolver cr = <span class="keyword">this</span>.getContentResolver();
+    Cursor imageCursor = cr.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, <span class="keyword">null</span>, <span class="keyword">null</span>, MediaStore.Images.Media._ID);
+    <span class="keyword">int</span> <span class="keyword">count</span> = imageCursor.getCount();
+    <span class="keyword">int</span> image_column_index = imageCursor.getColumnIndex(MediaStore.Images.Media._ID);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">count</span>; i++) {
+        imageCursor.moveToPosition(i);
+        <span class="keyword">int</span> id = imageCursor.getInt(image_column_index);
+        cr.<span class="keyword">delete</span>(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, MediaStore.Images.Media._ID + <span class="string">"=?"</span>, <span class="keyword">new</span> String[]{ <span class="keyword">Long</span>.toString(id) } );
+    }
+}
+</code></pre><p>主要是一个手动删除数据的功能，当然还可以做进一步的更改，可以对每一个的文件File.exist的判读，如果文件不存在就直接删除，这样更合理一些，由于在我的项目，不需要考虑这些，就没有添加。</p>
+<p>其实上面手动删除时数据库的功能是后期测试的时候发现最初用的方法兼容性不好才去用的。</p>
+<pre><code>sendBroadcast<span class="list">(<span class="keyword">new</span> Intent<span class="list">(<span class="keyword">Intent</span>.ACTION_MEDIA_SCANNER_SCAN_FILE, Url)</span>)</span><span class="comment">;</span>
+</code></pre><p>之前一直用的是这个方法，传递过去地址之后，手机会自动扫描数据库和文件，如果数据库不存在自动添加，如果文件不存在自动删除。但是有的手机不能够做到兼容。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://blog.micookie.net/2015/11/01/Android媒体库更新/" data-id="cil63pkpt0000msk5z4s4o74s" class="article-share-link" data-share="baidu" data-title="Android媒体库修改">分享到</a>
+      
+
+      
+        <a href="http://blog.micookie.net/2015/11/01/Android媒体库更新/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java.lang.NoClassDefFoundError" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/28/java.lang.NoClassDefFoundError/" class="article-date">
   <time datetime="2015-10-28T13:53:10.000Z" itemprop="datePublished">2015-10-28</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Adroid/">Adroid</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -111,7 +180,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/" data-id="cigawhmz30008iscvkfmfx8b1" class="article-share-link" data-share="baidu" data-title="java.lang.NoClassDefFoundError">分享到</a>
+        <a data-url="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/" data-id="cil63dxvt0008nwk5rjmkomwb" class="article-share-link" data-share="baidu" data-title="java.lang.NoClassDefFoundError">分享到</a>
       
 
       
@@ -134,6 +203,10 @@
   <time datetime="2015-10-22T15:08:10.000Z" itemprop="datePublished">2015-10-22</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Adroid/">Adroid</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -161,7 +234,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/10/22/关于Android拍照总结/" data-id="cigawhmys0003iscvrkqe5ieo" class="article-share-link" data-share="baidu" data-title="关于Android拍照总结">分享到</a>
+        <a data-url="http://blog.micookie.net/2015/10/22/关于Android拍照总结/" data-id="cil63dxv40003nwk5skydzuik" class="article-share-link" data-share="baidu" data-title="关于Android拍照总结">分享到</a>
       
 
       
@@ -220,7 +293,7 @@ $ npm <span class="keyword">install</span> hexo-generator-sitemap
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/" data-id="cigawhmze000hiscvrh6wabiu" class="article-share-link" data-share="baidu" data-title="Hexo添加RSS、Sitemap">分享到</a>
+        <a data-url="http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/" data-id="cil63dxwl000hnwk5mdjekqmb" class="article-share-link" data-share="baidu" data-title="Hexo添加RSS、Sitemap">分享到</a>
       
 
       
@@ -277,7 +350,7 @@ Initialize Engine: failed
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/10/07/Eclipse中启动Genymotion报错/" data-id="cigawhmzj000miscvbajfyxun" class="article-share-link" data-share="baidu" data-title="Eclipse中启动Genymotion报错">分享到</a>
+        <a data-url="http://blog.micookie.net/2015/10/07/Eclipse中启动Genymotion报错/" data-id="cil63dxwu000mnwk5llz154om" class="article-share-link" data-share="baidu" data-title="Eclipse中启动Genymotion报错">分享到</a>
       
 
       
@@ -286,6 +359,55 @@ Initialize Engine: failed
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mysql开启日常日志" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/04/mysql开启日常日志/" class="article-date">
+  <time datetime="2015-05-03T16:00:00.000Z" itemprop="datePublished">2015-05-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/04/mysql开启日常日志/">mysql开启日常日志genneral</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mysql的general日志会记录所有sql语句的执行，考虑到性能问题，生产环境下不应开启。对于开发过程中开启general log可以分析sql语句的性能问题，比较方便。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;<span class="keyword">set</span> <span class="keyword">global</span> log_output=<span class="keyword">file</span>;</span><br><span class="line"><span class="keyword">Query</span> OK, 0 rows affected (0.00 sec)</span><br><span class="line">设置general <span class="keyword">log</span>的日志文件路径：</span><br><span class="line">mysql&gt;<span class="keyword">set</span> <span class="keyword">global</span> general_log_file=<span class="string">"/tmp/general.log"</span>;</span><br><span class="line"><span class="keyword">Query</span> OK, 0 rows affected (0.00 sec)</span><br><span class="line"> 开启general <span class="keyword">log</span>：</span><br><span class="line">mysql&gt;<span class="keyword">set</span> <span class="keyword">global</span> general_log=<span class="keyword">on</span>;</span><br><span class="line"><span class="keyword">Query</span> OK, 0 rows affected (0.02 sec)</span><br><span class="line">过一段时间后，关闭general <span class="keyword">log</span>：</span><br><span class="line">mysql&gt;<span class="keyword">set</span> <span class="keyword">global</span> general_log=off;</span><br><span class="line"><span class="keyword">Query</span> OK, 0 rows affected (0.02 sec)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://blog.micookie.net/2015/05/04/mysql开启日常日志/" data-id="cil63ze2b0000a8k5x9jp9p4j" class="article-share-link" data-share="baidu" data-title="mysql开启日常日志genneral">分享到</a>
+      
+
+      
+        <a href="http://blog.micookie.net/2015/05/04/mysql开启日常日志/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
 
     </footer>
   </div>
@@ -330,7 +452,7 @@ Initialize Engine: failed
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/04/22/Linux中的alias使用/" data-id="cigawhmz7000aiscvgmqlwfv4" class="article-share-link" data-share="baidu" data-title="Linux中的alias使用">分享到</a>
+        <a data-url="http://blog.micookie.net/2015/04/22/Linux中的alias使用/" data-id="cil63dxw6000anwk5n3zlh3z7" class="article-share-link" data-share="baidu" data-title="Linux中的alias使用">分享到</a>
       
 
       
@@ -339,6 +461,55 @@ Initialize Engine: failed
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/效率/">效率</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Zend加载多个license" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/03/25/Zend加载多个license/" class="article-date">
+  <time datetime="2015-03-24T16:00:00.000Z" itemprop="datePublished">2015-03-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/25/Zend加载多个license/">Zend加载多个license</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>将多个zl文件，放置到一个文件夹，然后php.ini里边配置的时候path加载这个文件夹就可以了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://blog.micookie.net/2015/03/25/Zend加载多个license/" data-id="cil63pkse0003msk5moekvvrb" class="article-share-link" data-share="baidu" data-title="Zend加载多个license">分享到</a>
+      
+
+      
+        <a href="http://blog.micookie.net/2015/03/25/Zend加载多个license/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
 
     </footer>
   </div>
@@ -356,7 +527,7 @@ Initialize Engine: failed
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维/">运维</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Adroid/">Adroid</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维/">运维</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -365,7 +536,7 @@ Initialize Engine: failed
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拍照/">拍照</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yii/">Yii</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拍照/">拍照</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -374,7 +545,7 @@ Initialize Engine: failed
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/拍照/" style="font-size: 10px;">拍照</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/PHP/" style="font-size: 15px;">PHP</a> <a href="/tags/Yii/" style="font-size: 10px;">Yii</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/拍照/" style="font-size: 10px;">拍照</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a>
     </div>
   </div>
 
@@ -383,7 +554,7 @@ Initialize Engine: failed
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -393,6 +564,10 @@ Initialize Engine: failed
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/11/01/Android媒体库更新/">Android媒体库修改</a>
+          </li>
         
           <li>
             <a href="/2015/10/28/java.lang.NoClassDefFoundError/">java.lang.NoClassDefFoundError</a>
@@ -408,10 +583,6 @@ Initialize Engine: failed
         
           <li>
             <a href="/2015/10/07/Eclipse中启动Genymotion报错/">Eclipse中启动Genymotion报错</a>
-          </li>
-        
-          <li>
-            <a href="/2015/04/22/Linux中的alias使用/">Linux中的alias使用</a>
           </li>
         
       </ul>
@@ -445,7 +616,7 @@ Initialize Engine: failed
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2015 miCookie<br>
+      &copy; 2016 miCookie<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>

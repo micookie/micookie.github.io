@@ -4,7 +4,7 @@
   <subtitle><![CDATA[给我一个电脑，我能创造一个世界]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.micookie.net/"/>
-  <updated>2015-10-28T14:31:15.987Z</updated>
+  <updated>2016-02-28T05:07:02.125Z</updated>
   <id>http://blog.micookie.net/</id>
   
   <author>
@@ -15,11 +15,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Android媒体库修改]]></title>
+    <link href="http://blog.micookie.net/2015/11/01/Android%E5%AA%92%E4%BD%93%E5%BA%93%E6%9B%B4%E6%96%B0/"/>
+    <id>http://blog.micookie.net/2015/11/01/Android媒体库更新/</id>
+    <published>2015-11-01T09:59:41.000Z</published>
+    <updated>2016-02-28T05:07:02.125Z</updated>
+    <content type="html"><![CDATA[<p>因为照片是直接通过Java的File文件系统删除的，删除的时候并不会通知Android的媒体库进行更新数据库。数据库位置<code>/data/data/com.android.providers.media/</code>下的数据库，root后的手机可以通过RE管理的查看，image表中。<br>如下代码可以实现清理数据库的功能。</p>
+<pre><code><span class="keyword">private</span> <span class="keyword">void</span> clearMediaDatabase() {
+    String[] projection = { MediaStore.Images.Media._ID, MediaStore.Images.Media.DATA, MediaStore.Images.ImageColumns.DATA };
+    ContentResolver cr = <span class="keyword">this</span>.getContentResolver();
+    Cursor imageCursor = cr.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, <span class="keyword">null</span>, <span class="keyword">null</span>, MediaStore.Images.Media._ID);
+    <span class="keyword">int</span> <span class="keyword">count</span> = imageCursor.getCount();
+    <span class="keyword">int</span> image_column_index = imageCursor.getColumnIndex(MediaStore.Images.Media._ID);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">count</span>; i++) {
+        imageCursor.moveToPosition(i);
+        <span class="keyword">int</span> id = imageCursor.getInt(image_column_index);
+        cr.<span class="keyword">delete</span>(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, MediaStore.Images.Media._ID + <span class="string">"=?"</span>, <span class="keyword">new</span> String[]{ <span class="keyword">Long</span>.toString(id) } );
+    }
+}
+</code></pre><p>主要是一个手动删除数据的功能，当然还可以做进一步的更改，可以对每一个的文件File.exist的判读，如果文件不存在就直接删除，这样更合理一些，由于在我的项目，不需要考虑这些，就没有添加。</p>
+<p>其实上面手动删除时数据库的功能是后期测试的时候发现最初用的方法兼容性不好才去用的。</p>
+<pre><code>sendBroadcast<span class="list">(<span class="keyword">new</span> Intent<span class="list">(<span class="keyword">Intent</span>.ACTION_MEDIA_SCANNER_SCAN_FILE, Url)</span>)</span><span class="comment">;</span>
+</code></pre><p>之前一直用的是这个方法，传递过去地址之后，手机会自动扫描数据库和文件，如果数据库不存在自动添加，如果文件不存在自动删除。但是有的手机不能够做到兼容。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>因为照片是直接通过Java的File文件系统删除的，删除的时候并不会通知Android的媒体库进行更新数据库。数据库位置<code>/data/data/com.android.providers.media/</code>下的数据库，root后的手机可以通过RE管理的查看]]>
+    </summary>
+    
+      <category term="Android" scheme="http://blog.micookie.net/tags/Android/"/>
+    
+      <category term="Adroid" scheme="http://blog.micookie.net/categories/Adroid/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[java.lang.NoClassDefFoundError]]></title>
     <link href="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/"/>
     <id>http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/</id>
     <published>2015-10-28T13:53:10.000Z</published>
-    <updated>2015-10-28T14:31:15.987Z</updated>
+    <updated>2016-02-28T05:25:29.442Z</updated>
     <content type="html"><![CDATA[<p>一个项目中要实现查看手机自定义文件夹下的照片功能，于是在github找到了<a href="https://github.com/likebamboo/ImageChooser" target="_blank" rel="external">ImageChooser</a>这个项目，但是我导入到Eclipse之后，出现了编译，安装成功，在手机运行的时候报如下错误：</p>
 <pre><code>java.lang.NoClassDefFoundError: Failed   resolution of:Lcom/nostra13/universalimageloader/core/ImageLoaderConfiguration<span class="variable">$Builder</span>;
 </code></pre><a id="more"></a>
@@ -42,6 +76,8 @@
     
       <category term="Android" scheme="http://blog.micookie.net/tags/Android/"/>
     
+      <category term="Adroid" scheme="http://blog.micookie.net/categories/Adroid/"/>
+    
   </entry>
   
   <entry>
@@ -49,7 +85,7 @@
     <link href="http://blog.micookie.net/2015/10/22/%E5%85%B3%E4%BA%8EAndroid%E6%8B%8D%E7%85%A7%E6%80%BB%E7%BB%93/"/>
     <id>http://blog.micookie.net/2015/10/22/关于Android拍照总结/</id>
     <published>2015-10-22T15:08:10.000Z</published>
-    <updated>2015-10-22T15:11:17.976Z</updated>
+    <updated>2016-02-28T05:25:01.226Z</updated>
     <content type="html"><![CDATA[<p>网上搜拍照程序千篇一律，倒是都能正常的使用，但是很多问题存在，比如说拍照模糊……但是有人留言但是博主又不回复，总结了一下有这两种情况分别说明一下。</p>
 <h3 id="第一种通过URI_putextra">第一种通过URI  putextra</h3><pre><code>如果采用这种<span class="type">ResultActivity</span>中返回的<span class="typedef"><span class="keyword">data</span>为</span>
 </code></pre><h3 id="第二种通过Intent">第二种通过Intent</h3><pre><code>其实是缩略图
@@ -66,6 +102,8 @@
     
       <category term="拍照" scheme="http://blog.micookie.net/tags/%E6%8B%8D%E7%85%A7/"/>
     
+      <category term="Adroid" scheme="http://blog.micookie.net/categories/Adroid/"/>
+    
   </entry>
   
   <entry>
@@ -73,7 +111,7 @@
     <link href="http://blog.micookie.net/2015/10/20/Hexo%E6%B7%BB%E5%8A%A0RSS%E3%80%81Sitemap/"/>
     <id>http://blog.micookie.net/2015/10/20/Hexo添加RSS、Sitemap/</id>
     <published>2015-10-19T16:34:51.000Z</published>
-    <updated>2015-10-22T16:15:30.819Z</updated>
+    <updated>2016-02-28T05:25:25.095Z</updated>
     <content type="html"><![CDATA[<h2 id="折腾">折腾</h2><p>在网上搜索了一堆关于Hexo安装RSS、Sitemap插件，</p>
 <pre><code>$ npm <span class="keyword">install</span> hexo-generator-feed 
 $ npm <span class="keyword">install</span> hexo-generator-sitemap
@@ -155,6 +193,25 @@ Initialize Engine: failed
   </entry>
   
   <entry>
+    <title><![CDATA[mysql开启日常日志genneral]]></title>
+    <link href="http://blog.micookie.net/2015/05/04/mysql%E5%BC%80%E5%90%AF%E6%97%A5%E5%B8%B8%E6%97%A5%E5%BF%97/"/>
+    <id>http://blog.micookie.net/2015/05/04/mysql开启日常日志/</id>
+    <published>2015-05-03T16:00:00.000Z</published>
+    <updated>2016-02-28T05:20:53.939Z</updated>
+    <content type="html"><![CDATA[<p>mysql的general日志会记录所有sql语句的执行，考虑到性能问题，生产环境下不应开启。对于开发过程中开启general log可以分析sql语句的性能问题，比较方便。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;<span class="keyword">set</span> <span class="keyword">global</span> log_output=<span class="keyword">file</span>;</span><br><span class="line"><span class="keyword">Query</span> OK, 0 rows affected (0.00 sec)</span><br><span class="line">设置general <span class="keyword">log</span>的日志文件路径：</span><br><span class="line">mysql&gt;<span class="keyword">set</span> <span class="keyword">global</span> general_log_file=<span class="string">"/tmp/general.log"</span>;</span><br><span class="line"><span class="keyword">Query</span> OK, 0 rows affected (0.00 sec)</span><br><span class="line"> 开启general <span class="keyword">log</span>：</span><br><span class="line">mysql&gt;<span class="keyword">set</span> <span class="keyword">global</span> general_log=<span class="keyword">on</span>;</span><br><span class="line"><span class="keyword">Query</span> OK, 0 rows affected (0.02 sec)</span><br><span class="line">过一段时间后，关闭general <span class="keyword">log</span>：</span><br><span class="line">mysql&gt;<span class="keyword">set</span> <span class="keyword">global</span> general_log=off;</span><br><span class="line"><span class="keyword">Query</span> OK, 0 rows affected (0.02 sec)</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<p>mysql的general日志会记录所有sql语句的执行，考虑到性能问题，生产环境下不应开启。对于开发过程中开启general log可以分析sql语句的性能问题，比较方便。</p>
+<figure class="highlight stata"><table><tr><t]]>
+    </summary>
+    
+      <category term="mysql" scheme="http://blog.micookie.net/tags/mysql/"/>
+    
+      <category term="mysql" scheme="http://blog.micookie.net/categories/mysql/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Linux中的alias使用]]></title>
     <link href="http://blog.micookie.net/2015/04/22/Linux%E4%B8%AD%E7%9A%84alias%E4%BD%BF%E7%94%A8/"/>
     <id>http://blog.micookie.net/2015/04/22/Linux中的alias使用/</id>
@@ -182,6 +239,51 @@ Initialize Engine: failed
       <category term="效率" scheme="http://blog.micookie.net/tags/%E6%95%88%E7%8E%87/"/>
     
       <category term="运维" scheme="http://blog.micookie.net/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Zend加载多个license]]></title>
+    <link href="http://blog.micookie.net/2015/03/25/Zend%E5%8A%A0%E8%BD%BD%E5%A4%9A%E4%B8%AAlicense/"/>
+    <id>http://blog.micookie.net/2015/03/25/Zend加载多个license/</id>
+    <published>2015-03-24T16:00:00.000Z</published>
+    <updated>2016-02-28T05:24:23.590Z</updated>
+    <content type="html"><![CDATA[<p>将多个zl文件，放置到一个文件夹，然后php.ini里边配置的时候path加载这个文件夹就可以了。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>将多个zl文件，放置到一个文件夹，然后php.ini里边配置的时候path加载这个文件夹就可以了。</p>
+]]>
+    </summary>
+    
+      <category term="PHP" scheme="http://blog.micookie.net/tags/PHP/"/>
+    
+      <category term="PHP" scheme="http://blog.micookie.net/categories/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Yii::log()和Yii::trace()，日志的使用]]></title>
+    <link href="http://blog.micookie.net/2014/11/07/Yii%E6%97%A5%E5%BF%97%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://blog.micookie.net/2014/11/07/Yii日志的使用/</id>
+    <published>2014-11-06T16:00:00.000Z</published>
+    <updated>2016-02-28T05:23:38.787Z</updated>
+    <content type="html"><![CDATA[<h3 id="首先在config文件中设置log">首先在config文件中设置log</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">'log'</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'class'</span>=&gt;<span class="string">'CLogRouter'</span>,</span><br><span class="line">    <span class="string">'routes'</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">        <span class="keyword">array</span>(</span><br><span class="line">            <span class="string">'class'</span>=&gt;<span class="string">'CFileLogRoute'</span>,<span class="comment">//这表示把日志输出到文件中，下方有详细的</span></span><br><span class="line">            <span class="string">'levels'</span>=&gt;<span class="string">'error, warning'</span>,</span><br><span class="line">        ),</span><br><span class="line">        <span class="keyword">array</span>(</span><br><span class="line">            <span class="string">'class'</span>=&gt;<span class="string">'CWebLogRoute'</span>,<span class="comment">//这表示把日志显示在网页下方，下方有详细的</span></span><br><span class="line">            <span class="string">'levels'</span>=&gt;<span class="string">'trace, info, error, warning'</span>,</span><br><span class="line">            <span class="string">'categories'</span>=&gt;<span class="string">'cool.*,system.db.*'</span>,</span><br><span class="line">        ),</span><br><span class="line">    ),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<h3 id="日志路由class：">日志路由class：</h3><p>CDbLogRoute: 将信息保存到数据库的表中。<br>CEmailLogRoute: 发送信息到指定的 Email 地址。<br>CFileLogRoute: 保存信息到应用程序 runtime 目录中的一个文件中。<br>CWebLogRoute: 将 信息 显示在当前页面的底部。<br>CProfileLogRoute: 在页面的底部显示概述（profiling）信息。</p>
+<h3 id="信息级别levels：">信息级别levels：</h3><p>trace: 这是在 Yii::trace 中使用的级别。它用于在开发中 跟踪程序的执行流程。<br>info: 这个用于记录普通的信息。<br>profile: 这个是性能概述（profile）。下面马上会有更详细的说明。<br>warning: 这个用于警告（warning）信息。<br>error: 这个用于致命错误（fatal error）信息。</p>
+<h3 id="分类categories：">分类categories：</h3><p>可以自定义，但在输出函数里要对应才会被写入日志里<br>（例如上边写的是 cool.<em> 和 system.db.</em> ，就会把相应分类的信息写入日志，请结合下文来理解）</p>
+<p>设置完了，就可以用写入日志的函数来记录了：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">Yii</span>::<span class="function">trace</span>(<span class="string">'My log message.'</span>,<span class="string">'cool.pd'</span>);</span><br><span class="line"><span class="comment">//cool.pd属于cool.*分类，所以会被写入日志</span></span><br><span class="line"><span class="attribute">Yii</span>::<span class="function">log</span>(<span class="string">'My log message.'</span>,<span class="string">'info'</span>,<span class="string">'cool.collectpd'</span>);</span><br><span class="line"><span class="comment">//log定义级别为info，结合上文，第一个logclass会忽略，不会被写入文件，但会被第二个logclass接收，写入日志在网络下方显示。</span></span><br></pre></td></tr></table></figure></p>
+<p>trace()和log()的区别：<br>trace()只会在调试模式下生效，即开启debug的时候<br>trace()不分level，但log()能设置levels参数</p>
+<p>更详细可参考官方文件：<a href="http://www.yiiframework.com/doc/guide/1.1/zh_cn/topics.logging" target="_blank" rel="external">http://www.yiiframework.com/doc/guide/1.1/zh_cn/topics.logging</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="首先在config文件中设置log">首先在config文件中设置log</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span]]>
+    </summary>
+    
+      <category term="PHP" scheme="http://blog.micookie.net/tags/PHP/"/>
+    
+      <category term="Yii" scheme="http://blog.micookie.net/tags/Yii/"/>
+    
+      <category term="PHP" scheme="http://blog.micookie.net/categories/PHP/"/>
     
   </entry>
   
