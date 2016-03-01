@@ -4,7 +4,7 @@
   <subtitle><![CDATA[给我一个电脑，我能创造一个世界]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.micookie.net/"/>
-  <updated>2016-02-28T05:07:02.125Z</updated>
+  <updated>2016-03-01T16:15:17.541Z</updated>
   <id>http://blog.micookie.net/</id>
   
   <author>
@@ -15,31 +15,56 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Android媒体库修改]]></title>
+    <title><![CDATA[Windows高效工具推荐]]></title>
+    <link href="http://blog.micookie.net/2016/02/29/Windows%E9%AB%98%E6%95%88%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/"/>
+    <id>http://blog.micookie.net/2016/02/29/Windows高效工具推荐/</id>
+    <published>2016-02-28T16:00:00.000Z</published>
+    <updated>2016-03-01T16:15:17.541Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>要想愉快的工作开心的写代码，硬件上一个高配置的电脑是必须的，同时利用好软件也能极大的提高效率。下面介绍的几款软件是我的个人电脑必备神器，极力推荐大家去尝试一下。</p>
+</blockquote>
+<h1 id="1、Everything">1、Everything</h1><ul>
+<li>文件快速搜索工具<br>比起龟速的window search要爽2^n倍<br><a href="http://www.iplaysoft.com/everything.html" target="_blank" rel="external">详细介绍</a><br><a href="http://www.voidtools.com/" target="_blank" rel="external">官网</a></li>
+</ul>
+<h1 id="2、Wox">2、Wox</h1><ul>
+<li>快速启动工具<br>可以在任何地方快速打开程序，网站，查单词……支持自定义扩展<br>目前一个缺点是最新版第一次呼出响应慢。<br><a href="http://www.iplaysoft.com/wox.html" target="_blank" rel="external">详细介绍</a><br><a href="http://www.getwox.com/" target="_blank" rel="external">官网</a></li>
+</ul>
+<h1 id="3、_Listary">3、 Listary</h1><ul>
+<li>文件快速搜索工具<br>有点和Everything类似，不同之处是Listary可以嵌入到资源管理器中的框中，在上传文件的时候可以快速搜索文件。<br><a href="http://www.iplaysoft.com/listary.html" target="_blank" rel="external">详细介绍</a><br><a href="http://www.listary.com/" target="_blank" rel="external">官网</a></li>
+</ul>
+<h1 id="4、ClipMate">4、ClipMate</h1><ul>
+<li>剪切板历史记录<br>经常会遇到这种情况，写代码的过程中，我复制了一段代码，过一会我又复制了另外一段代码，但是我现在想粘贴我第一次复制的代码，这时候只需要按下<code>Ctrl+Alt+N</code>即可实现。另外还有众多功能待你探索。<br><a href="http://www.thornsoft.com/" target="_blank" rel="external">官网</a></li>
+</ul>
+<h1 id="5、软媒时间">5、软媒时间</h1><ul>
+<li>一款及其方便的日期查看，天气，记事，提醒工具。替换windows任务栏右下角的时间框。<br><a href="http://sj.ruanmei.com/" target="_blank" rel="external">官网</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<blockquote>
+<p>要想愉快的工作开心的写代码，硬件上一个高配置的电脑是必须的，同时利用好软件也能极大的提高效率。下面介绍的几款软件是我的个人电脑必备神器，极力推荐大家去尝试一下。</p>
+</blockquote>
+<h1 id="1、Everything">1、E]]>
+    </summary>
+    
+      <category term="效率" scheme="http://blog.micookie.net/tags/%E6%95%88%E7%8E%87/"/>
+    
+      <category term="运维" scheme="http://blog.micookie.net/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Android清空照片数据库缓存]]></title>
     <link href="http://blog.micookie.net/2015/11/01/Android%E5%AA%92%E4%BD%93%E5%BA%93%E6%9B%B4%E6%96%B0/"/>
     <id>http://blog.micookie.net/2015/11/01/Android媒体库更新/</id>
     <published>2015-11-01T09:59:41.000Z</published>
-    <updated>2016-02-28T05:07:02.125Z</updated>
-    <content type="html"><![CDATA[<p>因为照片是直接通过Java的File文件系统删除的，删除的时候并不会通知Android的媒体库进行更新数据库。数据库位置<code>/data/data/com.android.providers.media/</code>下的数据库，root后的手机可以通过RE管理的查看，image表中。<br>如下代码可以实现清理数据库的功能。</p>
-<pre><code><span class="keyword">private</span> <span class="keyword">void</span> clearMediaDatabase() {
-    String[] projection = { MediaStore.Images.Media._ID, MediaStore.Images.Media.DATA, MediaStore.Images.ImageColumns.DATA };
-    ContentResolver cr = <span class="keyword">this</span>.getContentResolver();
-    Cursor imageCursor = cr.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, <span class="keyword">null</span>, <span class="keyword">null</span>, MediaStore.Images.Media._ID);
-    <span class="keyword">int</span> <span class="keyword">count</span> = imageCursor.getCount();
-    <span class="keyword">int</span> image_column_index = imageCursor.getColumnIndex(MediaStore.Images.Media._ID);
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">count</span>; i++) {
-        imageCursor.moveToPosition(i);
-        <span class="keyword">int</span> id = imageCursor.getInt(image_column_index);
-        cr.<span class="keyword">delete</span>(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, MediaStore.Images.Media._ID + <span class="string">"=?"</span>, <span class="keyword">new</span> String[]{ <span class="keyword">Long</span>.toString(id) } );
-    }
-}
-</code></pre><p>主要是一个手动删除数据的功能，当然还可以做进一步的更改，可以对每一个的文件File.exist的判读，如果文件不存在就直接删除，这样更合理一些，由于在我的项目，不需要考虑这些，就没有添加。</p>
-<p>其实上面手动删除时数据库的功能是后期测试的时候发现最初用的方法兼容性不好才去用的。</p>
-<pre><code>sendBroadcast<span class="list">(<span class="keyword">new</span> Intent<span class="list">(<span class="keyword">Intent</span>.ACTION_MEDIA_SCANNER_SCAN_FILE, Url)</span>)</span><span class="comment">;</span>
-</code></pre><p>之前一直用的是这个方法，传递过去地址之后，手机会自动扫描数据库和文件，如果数据库不存在自动添加，如果文件不存在自动删除。但是有的手机不能够做到兼容。</p>
+    <updated>2016-03-01T16:09:40.541Z</updated>
+    <content type="html"><![CDATA[<p>一个项目中需要删除相册下的照片，直接通过Java的File类删除的，删除的时候并不会通知Android的媒体库进行更新数据库，从而导致系统图库的缓存中仍然有照片，但实际文件并不存在。<br>数据库位置<code>/data/data/com.android.providers.media/</code>下的数据库，root后的手机可以通过RE管理的查看，image表中。</p>
+<p>如下代码可以实现清理数据库的功能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">clearMediaDatabase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	String[] projection = &#123; MediaStore.Images.Media._ID, MediaStore.Images.Media.DATA, MediaStore.Images.ImageColumns.DATA &#125;;</span><br><span class="line">	ContentResolver cr = <span class="keyword">this</span>.getContentResolver();</span><br><span class="line">	Cursor imageCursor = cr.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, <span class="keyword">null</span>, <span class="keyword">null</span>, MediaStore.Images.Media._ID);</span><br><span class="line">	<span class="keyword">int</span> count = imageCursor.getCount();</span><br><span class="line">	<span class="keyword">int</span> image_column_index = imageCursor.getColumnIndex(MediaStore.Images.Media._ID);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">		imageCursor.moveToPosition(i);</span><br><span class="line">		<span class="keyword">int</span> id = imageCursor.getInt(image_column_index);</span><br><span class="line">           cr.delete(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, MediaStore.Images.Media._ID + <span class="string">"=?"</span>, <span class="keyword">new</span> String[]&#123; Long.toString(id) &#125; );</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后期优化：上述功能是清空照片数据库，可以针对某一张图片的记录进行删除处理。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>因为照片是直接通过Java的File文件系统删除的，删除的时候并不会通知Android的媒体库进行更新数据库。数据库位置<code>/data/data/com.android.providers.media/</code>下的数据库，root后的手机可以通过RE管理的查看]]>
+    <![CDATA[<p>一个项目中需要删除相册下的照片，直接通过Java的File类删除的，删除的时候并不会通知Android的媒体库进行更新数据库，从而导致系统图库的缓存中仍然有照片，但实际文件并不存在。<br>数据库位置<code>/data/data/com.android.provider]]>
     </summary>
     
       <category term="Android" scheme="http://blog.micookie.net/tags/Android/"/>

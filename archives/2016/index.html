@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Category: Adroid | miCookie</title>
+  <title>Archives: 2016 | miCookie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="给我一个电脑，我能创造一个世界">
 <meta property="og:type" content="website">
 <meta property="og:title" content="miCookie">
-<meta property="og:url" content="http://blog.micookie.net/categories/Adroid/index.html">
+<meta property="og:url" content="http://blog.micookie.net/archives/2016/index.html">
 <meta property="og:site_name" content="miCookie">
 <meta property="og:description" content="给我一个电脑，我能创造一个世界">
 <meta name="twitter:card" content="summary">
@@ -77,14 +77,14 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-Android媒体库更新" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Windows高效工具推荐" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/11/01/Android媒体库更新/" class="article-date">
-  <time datetime="2015-11-01T09:59:41.000Z" itemprop="datePublished">2015-11-01</time>
+    <a href="/2016/02/29/Windows高效工具推荐/" class="article-date">
+  <time datetime="2016-02-28T16:00:00.000Z" itemprop="datePublished">2016-02-29</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Adroid/">Adroid</a>
+    <a class="article-category-link" href="/categories/运维/">运维</a>
   </div>
 
   </div>
@@ -95,7 +95,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/01/Android媒体库更新/">Android清空照片数据库缓存</a>
+      <a class="article-title" href="/2016/02/29/Windows高效工具推荐/">Windows高效工具推荐</a>
     </h1>
   
 
@@ -103,133 +103,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一个项目中需要删除相册下的照片，直接通过Java的File类删除的，删除的时候并不会通知Android的媒体库进行更新数据库，从而导致系统图库的缓存中仍然有照片，但实际文件并不存在。<br>数据库位置<code>/data/data/com.android.providers.media/</code>下的数据库，root后的手机可以通过RE管理的查看，image表中。</p>
-<p>如下代码可以实现清理数据库的功能。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">clearMediaDatabase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	String[] projection = &#123; MediaStore.Images.Media._ID, MediaStore.Images.Media.DATA, MediaStore.Images.ImageColumns.DATA &#125;;</span><br><span class="line">	ContentResolver cr = <span class="keyword">this</span>.getContentResolver();</span><br><span class="line">	Cursor imageCursor = cr.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, <span class="keyword">null</span>, <span class="keyword">null</span>, MediaStore.Images.Media._ID);</span><br><span class="line">	<span class="keyword">int</span> count = imageCursor.getCount();</span><br><span class="line">	<span class="keyword">int</span> image_column_index = imageCursor.getColumnIndex(MediaStore.Images.Media._ID);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">		imageCursor.moveToPosition(i);</span><br><span class="line">		<span class="keyword">int</span> id = imageCursor.getInt(image_column_index);</span><br><span class="line">           cr.delete(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, MediaStore.Images.Media._ID + <span class="string">"=?"</span>, <span class="keyword">new</span> String[]&#123; Long.toString(id) &#125; );</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>后期优化：上述功能是清空照片数据库，可以针对某一张图片的记录进行删除处理。</p>
+        <blockquote>
+<p>要想愉快的工作开心的写代码，硬件上一个高配置的电脑是必须的，同时利用好软件也能极大的提高效率。下面介绍的几款软件是我的个人电脑必备神器，极力推荐大家去尝试一下。</p>
+</blockquote>
+<h1 id="1、Everything">1、Everything</h1><ul>
+<li>文件快速搜索工具<br>比起龟速的window search要爽2^n倍<br><a href="http://www.iplaysoft.com/everything.html" target="_blank" rel="external">详细介绍</a><br><a href="http://www.voidtools.com/" target="_blank" rel="external">官网</a></li>
+</ul>
+<h1 id="2、Wox">2、Wox</h1><ul>
+<li>快速启动工具<br>可以在任何地方快速打开程序，网站，查单词……支持自定义扩展<br>目前一个缺点是最新版第一次呼出响应慢。<br><a href="http://www.iplaysoft.com/wox.html" target="_blank" rel="external">详细介绍</a><br><a href="http://www.getwox.com/" target="_blank" rel="external">官网</a></li>
+</ul>
+<h1 id="3、_Listary">3、 Listary</h1><ul>
+<li>文件快速搜索工具<br>有点和Everything类似，不同之处是Listary可以嵌入到资源管理器中的框中，在上传文件的时候可以快速搜索文件。<br><a href="http://www.iplaysoft.com/listary.html" target="_blank" rel="external">详细介绍</a><br><a href="http://www.listary.com/" target="_blank" rel="external">官网</a></li>
+</ul>
+<h1 id="4、ClipMate">4、ClipMate</h1><ul>
+<li>剪切板历史记录<br>经常会遇到这种情况，写代码的过程中，我复制了一段代码，过一会我又复制了另外一段代码，但是我现在想粘贴我第一次复制的代码，这时候只需要按下<code>Ctrl+Alt+N</code>即可实现。另外还有众多功能待你探索。<br><a href="http://www.thornsoft.com/" target="_blank" rel="external">官网</a></li>
+</ul>
+<h1 id="5、软媒时间">5、软媒时间</h1><ul>
+<li>一款及其方便的日期查看，天气，记事，提醒工具。替换windows任务栏右下角的时间框。<br><a href="http://sj.ruanmei.com/" target="_blank" rel="external">官网</a></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/11/01/Android媒体库更新/" data-id="cil9lvys00018ssk57u34iz1j" class="article-share-link" data-share="baidu" data-title="Android清空照片数据库缓存">分享到</a>
+        <a data-url="http://blog.micookie.net/2016/02/29/Windows高效工具推荐/" data-id="cil9m55o20000ack5adyain7d" class="article-share-link" data-share="baidu" data-title="Windows高效工具推荐">分享到</a>
       
 
       
-        <a href="http://blog.micookie.net/2015/11/01/Android媒体库更新/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://blog.micookie.net/2016/02/29/Windows高效工具推荐/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java.lang.NoClassDefFoundError" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/28/java.lang.NoClassDefFoundError/" class="article-date">
-  <time datetime="2015-10-28T13:53:10.000Z" itemprop="datePublished">2015-10-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Adroid/">Adroid</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/28/java.lang.NoClassDefFoundError/">java.lang.NoClassDefFoundError</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一个项目中要实现查看手机自定义文件夹下的照片功能，于是在github找到了<a href="https://github.com/likebamboo/ImageChooser">ImageChooser</a>这个项目，但是我导入到Eclipse之后，出现了编译，安装成功，在手机运行的时候报如下错误：</p>
-<pre><code>java.lang.NoClassDefFoundError: Failed   resolution of:Lcom/nostra13/universalimageloader/core/ImageLoaderConfiguration<span class="variable">$Builder</span>;
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/28/java.lang.NoClassDefFoundError/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/" data-id="cil9lvyq8000fssk5yqr5nemh" class="article-share-link" data-share="baidu" data-title="java.lang.NoClassDefFoundError">分享到</a>
-      
-
-      
-        <a href="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-关于Android拍照总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/22/关于Android拍照总结/" class="article-date">
-  <time datetime="2015-10-22T15:08:10.000Z" itemprop="datePublished">2015-10-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Adroid/">Adroid</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/22/关于Android拍照总结/">关于Android拍照总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>网上搜拍照程序千篇一律，倒是都能正常的使用，但是很多问题存在，比如说拍照模糊……但是有人留言但是博主又不回复，总结了一下有这两种情况分别说明一下。</p>
-<h3 id="第一种通过URI_putextra">第一种通过URI  putextra</h3><pre><code>如果采用这种<span class="type">ResultActivity</span>中返回的<span class="typedef"><span class="keyword">data</span>为</span>
-</code></pre><h3 id="第二种通过Intent">第二种通过Intent</h3><pre><code>其实是缩略图
-
-
-待续。。。
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://blog.micookie.net/2015/10/22/关于Android拍照总结/" data-id="cil9lvypr0003ssk5uesprbmg" class="article-share-link" data-share="baidu" data-title="关于Android拍照总结">分享到</a>
-      
-
-      
-        <a href="http://blog.micookie.net/2015/10/22/关于Android拍照总结/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拍照/">拍照</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/效率/">效率</a></li></ul>
 
     </footer>
   </div>

@@ -14,13 +14,6 @@
     </url>
 
     <url>
-        <loc>http://blog.micookie.net/categories/%E8%BF%90%E7%BB%B4/</loc>
-        <lastmod>2015-10-22T16:18:04.883Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.micookie.net/categories/mysql/</loc>
         <lastmod>2016-02-28T05:20:53.939Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -43,7 +36,14 @@
 
     <url>
         <loc>http://blog.micookie.net/categories/Adroid/</loc>
-        <lastmod>2016-02-28T05:25:29.442Z</lastmod>
+        <lastmod>2016-03-01T16:09:40.541Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.micookie.net/categories/%E8%BF%90%E7%BB%B4/</loc>
+        <lastmod>2016-03-01T16:15:17.541Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
