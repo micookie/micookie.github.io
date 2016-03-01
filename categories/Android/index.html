@@ -77,6 +77,167 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Android媒体库更新" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/01/Android媒体库更新/" class="article-date">
+  <time datetime="2015-11-01T09:59:41.000Z" itemprop="datePublished">2015-11-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/01/Android媒体库更新/">Android清空照片数据库缓存</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个项目中需要删除相册下的照片，直接通过Java的File类删除的，删除的时候并不会通知Android的媒体库进行更新数据库，从而导致系统图库的缓存中仍然有照片，但实际文件并不存在。<br>数据库位置<code>/data/data/com.android.providers.media/</code>下的数据库，root后的手机可以通过RE管理的查看，image表中。</p>
+<p>如下代码可以实现清理数据库的功能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">clearMediaDatabase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	String[] projection = &#123; MediaStore.Images.Media._ID, MediaStore.Images.Media.DATA, MediaStore.Images.ImageColumns.DATA &#125;;</span><br><span class="line">	ContentResolver cr = <span class="keyword">this</span>.getContentResolver();</span><br><span class="line">	Cursor imageCursor = cr.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, <span class="keyword">null</span>, <span class="keyword">null</span>, MediaStore.Images.Media._ID);</span><br><span class="line">	<span class="keyword">int</span> count = imageCursor.getCount();</span><br><span class="line">	<span class="keyword">int</span> image_column_index = imageCursor.getColumnIndex(MediaStore.Images.Media._ID);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">		imageCursor.moveToPosition(i);</span><br><span class="line">		<span class="keyword">int</span> id = imageCursor.getInt(image_column_index);</span><br><span class="line">           cr.delete(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, MediaStore.Images.Media._ID + <span class="string">"=?"</span>, <span class="keyword">new</span> String[]&#123; Long.toString(id) &#125; );</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后期优化：上述功能是清空照片数据库，可以针对某一张图片的记录进行删除处理。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://blog.micookie.net/2015/11/01/Android媒体库更新/" data-id="cil9ntkft001bp8k5pnnalrdk" class="article-share-link" data-share="baidu" data-title="Android清空照片数据库缓存">分享到</a>
+      
+
+      
+        <a href="http://blog.micookie.net/2015/11/01/Android媒体库更新/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java.lang.NoClassDefFoundError" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/28/java.lang.NoClassDefFoundError/" class="article-date">
+  <time datetime="2015-10-28T13:53:10.000Z" itemprop="datePublished">2015-10-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/28/java.lang.NoClassDefFoundError/">java.lang.NoClassDefFoundError</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个项目中要实现查看手机自定义文件夹下的照片功能，于是在github找到了<a href="https://github.com/likebamboo/ImageChooser">ImageChooser</a>这个项目，但是我导入到Eclipse之后，出现了编译，安装成功，在手机运行的时候报如下错误：</p>
+<pre><code>java.lang.NoClassDefFoundError: Failed   resolution of:Lcom/nostra13/universalimageloader/core/ImageLoaderConfiguration<span class="variable">$Builder</span>;
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/28/java.lang.NoClassDefFoundError/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/" data-id="cil9ntke9000fp8k5pvecffen" class="article-share-link" data-share="baidu" data-title="java.lang.NoClassDefFoundError">分享到</a>
+      
+
+      
+        <a href="http://blog.micookie.net/2015/10/28/java.lang.NoClassDefFoundError/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-关于Android拍照总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/22/关于Android拍照总结/" class="article-date">
+  <time datetime="2015-10-22T15:08:10.000Z" itemprop="datePublished">2015-10-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/22/关于Android拍照总结/">关于Android拍照总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>网上搜拍照程序千篇一律，倒是都能正常的使用，但是很多问题存在，比如说拍照模糊……但是有人留言但是博主又不回复，总结了一下有这两种情况分别说明一下。</p>
+<h3 id="第一种通过URI_putextra">第一种通过URI  putextra</h3><pre><code>如果采用这种<span class="type">ResultActivity</span>中返回的<span class="typedef"><span class="keyword">data</span>为</span>
+</code></pre><h3 id="第二种通过Intent">第二种通过Intent</h3><pre><code>其实是缩略图
+
+
+待续。。。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://blog.micookie.net/2015/10/22/关于Android拍照总结/" data-id="cil9ntkdj0003p8k5sqd2yogh" class="article-share-link" data-share="baidu" data-title="关于Android拍照总结">分享到</a>
+      
+
+      
+        <a href="http://blog.micookie.net/2015/10/22/关于Android拍照总结/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拍照/">拍照</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Eclipse中启动Genymotion报错" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/07/Eclipse中启动Genymotion报错/" class="article-date">
@@ -117,7 +278,7 @@ Initialize Engine: failed
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2015/10/07/Eclipse中启动Genymotion报错/" data-id="cil9lvyr30014ssk559ep6x5n" class="article-share-link" data-share="baidu" data-title="Eclipse中启动Genymotion报错">分享到</a>
+        <a data-url="http://blog.micookie.net/2015/10/07/Eclipse中启动Genymotion报错/" data-id="cil9ntkfl0017p8k5zj53fcxd" class="article-share-link" data-share="baidu" data-title="Eclipse中启动Genymotion报错">分享到</a>
       
 
       
@@ -143,7 +304,7 @@ Initialize Engine: failed
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Adroid/">Adroid</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维/">运维</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维/">运维</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
