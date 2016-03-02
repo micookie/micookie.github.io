@@ -115,7 +115,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2014/11/07/Yii日志的使用/" data-id="cilb1163z000n9ck53b3qsffn" class="article-share-link" data-share="baidu" data-title="Yii::log()和Yii::trace()，日志的使用">分享到</a>
+        <a data-url="http://blog.micookie.net/2014/11/07/Yii日志的使用/" data-id="cilb1z6xn000q6kk5t18qi5no" class="article-share-link" data-share="baidu" data-title="Yii::log()和Yii::trace()，日志的使用">分享到</a>
       
 
       
@@ -124,6 +124,131 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Yii/">Yii</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-wdlinux增加php的sockets模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/12/wdlinux增加php的sockets模块/" class="article-date">
+  <time datetime="2014-10-11T16:00:00.000Z" itemprop="datePublished">2014-10-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/12/wdlinux增加php的sockets模块/">wdlinux增加php的sockets模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在wdlinux中PHP的默认没有加载sockets模块，在使用websocket通信时会报一个错误</p>
+<p>  undefined function socket_create();    缺少scocket通信模块。</p>
+<p>系统是centos6.3 64位</p>
+<p>首先去取得wdlinux的安装包命令如下：</p>
+<p> wget <a href="http://dl.wdlinux.cn:5180/lanmp_laster.tar.gz" target="_blank" rel="external">http://dl.wdlinux.cn:5180/lanmp_laster.tar.gz</a> </p>
+<p>解压</p>
+<p>  tar -zxvf lanmp_laster.tar.gz  进入目录cdlanmp_laster看到有两个和php有关的包</p>
+<p>我们继续解压</p>
+<p>  tar -zxvf php-5.2.17.tar.gz进入目录</p>
+<p>  cd php-5.2.17进入扩展目录cd ext</p>
+<p>看到sockets目录</p>
+<p>我们将其拷贝到以下目录</p>
+<p>  cp -r sockets//www/wdlinux/apache_php-5.2.17/include/php/ext/</p>
+<p>进入目录</p>
+<p>  cd  /www/wdlinux/apache_php-5.2.17/include/php/ext/sockets</p>
+<p>开始编译</p>
+<p>执行：</p>
+<p>  /www/wdlinux/php/bin/phpize  ./configure–enable-sockets –with-php-config=/www/wdlinux/php/bin/php-config</p>
+<p>  make</p>
+<p>  makeinstall</p>
+<p>修改配置文件</p>
+<p>  vim /www/wdlinux/etc/php.ini       在最后增加</p>
+<p>  extension=”/usr/local/php/lib/php/extensions/no-debug-non-zts-20060613/sockets.so” </p>
+<p>重启服务</p>
+<p>  service httpd restart</p>
+<p> 使用phpinfo();查看扩展是否安装成功</p>
+<p> 到此结束。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://blog.micookie.net/2014/10/12/wdlinux增加php的sockets模块/" data-id="cilb1z6x2000a6kk5ugrkglbw" class="article-share-link" data-share="baidu" data-title="wdlinux增加php的sockets模块">分享到</a>
+      
+
+      
+        <a href="http://blog.micookie.net/2014/10/12/wdlinux增加php的sockets模块/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-PHP颜色替换，白色替换透明色" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/12/PHP颜色替换，白色替换透明色/" class="article-date">
+  <time datetime="2014-10-11T16:00:00.000Z" itemprop="datePublished">2014-10-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/12/PHP颜色替换，白色替换透明色/">PHP颜色替换，白色替换透明色</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>PHP颜色替换，根据自己的需求对替换的颜色进行更改</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">&lt;?</span></span><br><span class="line"><span class="variable">$o_pic</span> = <span class="string">'test1.png'</span>;</span><br><span class="line"><span class="comment">//要处理的色阶起始值</span></span><br><span class="line"><span class="variable">$begin_r</span> = <span class="number">255</span>;</span><br><span class="line"><span class="variable">$begin_g</span> = <span class="number">255</span>;</span><br><span class="line"><span class="variable">$begin_b</span> = <span class="number">255</span>;</span><br><span class="line"><span class="keyword">list</span>(<span class="variable">$src_w</span>, <span class="variable">$src_h</span>, <span class="variable">$src_type</span>) = getimagesize(<span class="variable">$o_pic</span>); <span class="comment">// 获取原图像信息</span></span><br><span class="line"><span class="variable">$target_im</span> = imagecreatetruecolor(<span class="variable">$src_w</span>, <span class="variable">$src_h</span>); <span class="comment">//新图</span></span><br><span class="line"><span class="variable">$src_im</span> = imagecreatefrompng(<span class="variable">$o_pic</span>);</span><br><span class="line">imagecopymerge(<span class="variable">$target_im</span>, <span class="variable">$src_im</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="variable">$src_w</span>, <span class="variable">$src_h</span>, <span class="number">100</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$x</span> = <span class="number">0</span>; <span class="variable">$x</span> &lt; <span class="variable">$src_w</span>; <span class="variable">$x</span>++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="variable">$y</span> = <span class="number">0</span>; <span class="variable">$y</span> &lt; <span class="variable">$src_h</span>; <span class="variable">$y</span>++) &#123;</span><br><span class="line">        <span class="variable">$rgb</span> = imagecolorat(<span class="variable">$src_im</span>, <span class="variable">$x</span>, <span class="variable">$y</span>);</span><br><span class="line">        <span class="variable">$r</span> = (<span class="variable">$rgb</span> &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>;</span><br><span class="line">        <span class="variable">$g</span> = (<span class="variable">$rgb</span> &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>;</span><br><span class="line">        <span class="variable">$b</span> = <span class="variable">$rgb</span> &amp; <span class="number">0xFF</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$r</span> &gt;= <span class="variable">$begin_r</span> &amp;&amp; <span class="variable">$g</span> &gt;= <span class="variable">$begin_g</span> &amp;&amp; <span class="variable">$b</span> &gt;= <span class="variable">$begin_b</span>) &#123;</span><br><span class="line">            imagecolortransparent(<span class="variable">$target_im</span>, imagecolorallocate(<span class="variable">$target_im</span>, <span class="variable">$r</span>, <span class="variable">$g</span>, <span class="variable">$b</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">imagepng(<span class="variable">$target_im</span>);</span><br><span class="line">imagedestroy(<span class="variable">$target_im</span>);</span><br><span class="line"><span class="preprocessor">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://blog.micookie.net/2014/10/12/PHP颜色替换，白色替换透明色/" data-id="cilb2563w0000kwk5peqczazh" class="article-share-link" data-share="baidu" data-title="PHP颜色替换，白色替换透明色">分享到</a>
+      
+
+      
+        <a href="http://blog.micookie.net/2014/10/12/PHP颜色替换，白色替换透明色/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
 
     </footer>
   </div>
@@ -145,7 +270,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维/">运维</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维/">运维</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -154,7 +279,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yii/">Yii</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拍照/">拍照</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yii/">Yii</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拍照/">拍照</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -163,7 +288,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/PHP/" style="font-size: 16.67px;">PHP</a> <a href="/tags/Yii/" style="font-size: 10px;">Yii</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/拍照/" style="font-size: 10px;">拍照</a> <a href="/tags/效率/" style="font-size: 13.33px;">效率</a>
+      <a href="/tags/Android/" style="font-size: 16.67px;">Android</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/Yii/" style="font-size: 10px;">Yii</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/拍照/" style="font-size: 10px;">拍照</a> <a href="/tags/效率/" style="font-size: 13.33px;">效率</a>
     </div>
   </div>
 
@@ -172,7 +297,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 

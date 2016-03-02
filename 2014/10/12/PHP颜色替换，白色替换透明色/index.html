@@ -4,18 +4,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Yii::log()和Yii::trace()，日志的使用 | miCookie</title>
+  <title>PHP颜色替换，白色替换透明色 | miCookie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="首先在config文件中设置log123456789101112131415&apos;log&apos;=&amp;gt;array(    &apos;class&apos;=&amp;gt;&apos;CLogRouter&apos;,    &apos;routes&apos;=&amp;gt;array(        array(            &apos;class&apos;=&amp;gt;&apos;CFileLogRoute&apos;,//这表示把日志输出到文件中，下方有详细的            &apos;levels">
+  <meta name="description" content="PHP颜色替换，根据自己的需求对替换的颜色进行更改
+123456789101112131415161718192021222324&amp;lt;?$o_pic = &apos;test1.png&apos;;//要处理的色阶起始值$begin_r = 255;$begin_g = 255;$begin_b = 255;list($src_w, $src_h, $src_type) = getimagesize($o_pic">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Yii::log()和Yii::trace()，日志的使用">
-<meta property="og:url" content="http://blog.micookie.net/2014/11/07/Yii日志的使用/index.html">
+<meta property="og:title" content="PHP颜色替换，白色替换透明色">
+<meta property="og:url" content="http://blog.micookie.net/2014/10/12/PHP颜色替换，白色替换透明色/index.html">
 <meta property="og:site_name" content="miCookie">
-<meta property="og:description" content="首先在config文件中设置log123456789101112131415&apos;log&apos;=&amp;gt;array(    &apos;class&apos;=&amp;gt;&apos;CLogRouter&apos;,    &apos;routes&apos;=&amp;gt;array(        array(            &apos;class&apos;=&amp;gt;&apos;CFileLogRoute&apos;,//这表示把日志输出到文件中，下方有详细的            &apos;levels">
-<meta property="og:updated_time" content="2016-02-28T05:23:38.787Z">
+<meta property="og:description" content="PHP颜色替换，根据自己的需求对替换的颜色进行更改
+123456789101112131415161718192021222324&amp;lt;?$o_pic = &apos;test1.png&apos;;//要处理的色阶起始值$begin_r = 255;$begin_g = 255;$begin_b = 255;list($src_w, $src_h, $src_type) = getimagesize($o_pic">
+<meta property="og:updated_time" content="2016-03-02T16:27:11.151Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yii::log()和Yii::trace()，日志的使用">
-<meta name="twitter:description" content="首先在config文件中设置log123456789101112131415&apos;log&apos;=&amp;gt;array(    &apos;class&apos;=&amp;gt;&apos;CLogRouter&apos;,    &apos;routes&apos;=&amp;gt;array(        array(            &apos;class&apos;=&amp;gt;&apos;CFileLogRoute&apos;,//这表示把日志输出到文件中，下方有详细的            &apos;levels">
+<meta name="twitter:title" content="PHP颜色替换，白色替换透明色">
+<meta name="twitter:description" content="PHP颜色替换，根据自己的需求对替换的颜色进行更改
+123456789101112131415161718192021222324&amp;lt;?$o_pic = &apos;test1.png&apos;;//要处理的色阶起始值$begin_r = 255;$begin_g = 255;$begin_b = 255;list($src_w, $src_h, $src_type) = getimagesize($o_pic">
   
     <link rel="alternative" href="/atom.xml" title="miCookie" type="application/atom+xml">
   
@@ -76,10 +79,10 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-Yii日志的使用" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-PHP颜色替换，白色替换透明色" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/11/07/Yii日志的使用/" class="article-date">
-  <time datetime="2014-11-06T16:00:00.000Z" itemprop="datePublished">2014-11-07</time>
+    <a href="/2014/10/12/PHP颜色替换，白色替换透明色/" class="article-date">
+  <time datetime="2014-10-11T16:00:00.000Z" itemprop="datePublished">2014-10-12</time>
 </a>
     
   <div class="article-category">
@@ -94,7 +97,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Yii::log()和Yii::trace()，日志的使用
+      PHP颜色替换，白色替换透明色
     </h1>
   
 
@@ -102,27 +105,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="首先在config文件中设置log">首先在config文件中设置log</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">'log'</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'class'</span>=&gt;<span class="string">'CLogRouter'</span>,</span><br><span class="line">    <span class="string">'routes'</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">        <span class="keyword">array</span>(</span><br><span class="line">            <span class="string">'class'</span>=&gt;<span class="string">'CFileLogRoute'</span>,<span class="comment">//这表示把日志输出到文件中，下方有详细的</span></span><br><span class="line">            <span class="string">'levels'</span>=&gt;<span class="string">'error, warning'</span>,</span><br><span class="line">        ),</span><br><span class="line">        <span class="keyword">array</span>(</span><br><span class="line">            <span class="string">'class'</span>=&gt;<span class="string">'CWebLogRoute'</span>,<span class="comment">//这表示把日志显示在网页下方，下方有详细的</span></span><br><span class="line">            <span class="string">'levels'</span>=&gt;<span class="string">'trace, info, error, warning'</span>,</span><br><span class="line">            <span class="string">'categories'</span>=&gt;<span class="string">'cool.*,system.db.*'</span>,</span><br><span class="line">        ),</span><br><span class="line">    ),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
-<h3 id="日志路由class：">日志路由class：</h3><p>CDbLogRoute: 将信息保存到数据库的表中。<br>CEmailLogRoute: 发送信息到指定的 Email 地址。<br>CFileLogRoute: 保存信息到应用程序 runtime 目录中的一个文件中。<br>CWebLogRoute: 将 信息 显示在当前页面的底部。<br>CProfileLogRoute: 在页面的底部显示概述（profiling）信息。</p>
-<h3 id="信息级别levels：">信息级别levels：</h3><p>trace: 这是在 Yii::trace 中使用的级别。它用于在开发中 跟踪程序的执行流程。<br>info: 这个用于记录普通的信息。<br>profile: 这个是性能概述（profile）。下面马上会有更详细的说明。<br>warning: 这个用于警告（warning）信息。<br>error: 这个用于致命错误（fatal error）信息。</p>
-<h3 id="分类categories：">分类categories：</h3><p>可以自定义，但在输出函数里要对应才会被写入日志里<br>（例如上边写的是 cool.<em> 和 system.db.</em> ，就会把相应分类的信息写入日志，请结合下文来理解）</p>
-<p>设置完了，就可以用写入日志的函数来记录了：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">Yii</span>::<span class="function">trace</span>(<span class="string">'My log message.'</span>,<span class="string">'cool.pd'</span>);</span><br><span class="line"><span class="comment">//cool.pd属于cool.*分类，所以会被写入日志</span></span><br><span class="line"><span class="attribute">Yii</span>::<span class="function">log</span>(<span class="string">'My log message.'</span>,<span class="string">'info'</span>,<span class="string">'cool.collectpd'</span>);</span><br><span class="line"><span class="comment">//log定义级别为info，结合上文，第一个logclass会忽略，不会被写入文件，但会被第二个logclass接收，写入日志在网络下方显示。</span></span><br></pre></td></tr></table></figure></p>
-<p>trace()和log()的区别：<br>trace()只会在调试模式下生效，即开启debug的时候<br>trace()不分level，但log()能设置levels参数</p>
-<p>更详细可参考官方文件：<a href="http://www.yiiframework.com/doc/guide/1.1/zh_cn/topics.logging" target="_blank" rel="external">http://www.yiiframework.com/doc/guide/1.1/zh_cn/topics.logging</a></p>
+        <p>PHP颜色替换，根据自己的需求对替换的颜色进行更改</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">&lt;?</span></span><br><span class="line"><span class="variable">$o_pic</span> = <span class="string">'test1.png'</span>;</span><br><span class="line"><span class="comment">//要处理的色阶起始值</span></span><br><span class="line"><span class="variable">$begin_r</span> = <span class="number">255</span>;</span><br><span class="line"><span class="variable">$begin_g</span> = <span class="number">255</span>;</span><br><span class="line"><span class="variable">$begin_b</span> = <span class="number">255</span>;</span><br><span class="line"><span class="keyword">list</span>(<span class="variable">$src_w</span>, <span class="variable">$src_h</span>, <span class="variable">$src_type</span>) = getimagesize(<span class="variable">$o_pic</span>); <span class="comment">// 获取原图像信息</span></span><br><span class="line"><span class="variable">$target_im</span> = imagecreatetruecolor(<span class="variable">$src_w</span>, <span class="variable">$src_h</span>); <span class="comment">//新图</span></span><br><span class="line"><span class="variable">$src_im</span> = imagecreatefrompng(<span class="variable">$o_pic</span>);</span><br><span class="line">imagecopymerge(<span class="variable">$target_im</span>, <span class="variable">$src_im</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="variable">$src_w</span>, <span class="variable">$src_h</span>, <span class="number">100</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$x</span> = <span class="number">0</span>; <span class="variable">$x</span> &lt; <span class="variable">$src_w</span>; <span class="variable">$x</span>++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="variable">$y</span> = <span class="number">0</span>; <span class="variable">$y</span> &lt; <span class="variable">$src_h</span>; <span class="variable">$y</span>++) &#123;</span><br><span class="line">        <span class="variable">$rgb</span> = imagecolorat(<span class="variable">$src_im</span>, <span class="variable">$x</span>, <span class="variable">$y</span>);</span><br><span class="line">        <span class="variable">$r</span> = (<span class="variable">$rgb</span> &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>;</span><br><span class="line">        <span class="variable">$g</span> = (<span class="variable">$rgb</span> &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>;</span><br><span class="line">        <span class="variable">$b</span> = <span class="variable">$rgb</span> &amp; <span class="number">0xFF</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$r</span> &gt;= <span class="variable">$begin_r</span> &amp;&amp; <span class="variable">$g</span> &gt;= <span class="variable">$begin_g</span> &amp;&amp; <span class="variable">$b</span> &gt;= <span class="variable">$begin_b</span>) &#123;</span><br><span class="line">            imagecolortransparent(<span class="variable">$target_im</span>, imagecolorallocate(<span class="variable">$target_im</span>, <span class="variable">$r</span>, <span class="variable">$g</span>, <span class="variable">$b</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">imagepng(<span class="variable">$target_im</span>);</span><br><span class="line">imagedestroy(<span class="variable">$target_im</span>);</span><br><span class="line"><span class="preprocessor">?&gt;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://blog.micookie.net/2014/11/07/Yii日志的使用/" data-id="cilb1z6xn000q6kk5t18qi5no" class="article-share-link" data-share="baidu" data-title="Yii::log()和Yii::trace()，日志的使用">分享到</a>
+        <a data-url="http://blog.micookie.net/2014/10/12/PHP颜色替换，白色替换透明色/" data-id="cilb2563w0000kwk5peqczazh" class="article-share-link" data-share="baidu" data-title="PHP颜色替换，白色替换透明色">分享到</a>
       
 
       
-        <a href="http://blog.micookie.net/2014/11/07/Yii日志的使用/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://blog.micookie.net/2014/10/12/PHP颜色替换，白色替换透明色/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Yii/">Yii</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
 
     </footer>
   </div>
@@ -130,20 +128,15 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/12/20/PHP断点调试(Xdebug配置)/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/10/12/wdlinux增加php的sockets模块/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          php断点调试(Xdebug配置)
+          wdlinux增加php的sockets模块
         
       </div>
     </a>
   
-  
-    <a href="/2014/10/12/wdlinux增加php的sockets模块/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">wdlinux增加php的sockets模块</div>
-    </a>
   
 </nav>
 
@@ -152,7 +145,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2014/11/07/Yii日志的使用/" data-title="Yii::log()和Yii::trace()，日志的使用" data-url="http://blog.micookie.net/2014/11/07/Yii日志的使用/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2014/10/12/PHP颜色替换，白色替换透明色/" data-title="PHP颜色替换，白色替换透明色" data-url="http://blog.micookie.net/2014/10/12/PHP颜色替换，白色替换透明色/"></div>
   </section>
 </section>
       

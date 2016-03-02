@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2014 | miCookie</title>
+  <title>Archives: 2014/10 | miCookie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="给我一个电脑，我能创造一个世界">
 <meta property="og:type" content="website">
 <meta property="og:title" content="miCookie">
-<meta property="og:url" content="http://blog.micookie.net/archives/2014/index.html">
+<meta property="og:url" content="http://blog.micookie.net/archives/2014/10/index.html">
 <meta property="og:site_name" content="miCookie">
 <meta property="og:description" content="给我一个电脑，我能创造一个世界">
 <meta name="twitter:card" content="summary">
@@ -76,141 +76,6 @@
 </header>
     <div class="outer">
       <section id="main">
-  
-    <article id="post-PHP断点调试(Xdebug配置)" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/12/20/PHP断点调试(Xdebug配置)/" class="article-date">
-  <time datetime="2014-12-19T16:00:00.000Z" itemprop="datePublished">2014-12-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/20/PHP断点调试(Xdebug配置)/">php断点调试(Xdebug配置)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在最开始学习C语言的时候，断点调试是基本要学习使用的，一方面是方便程序调试；二是能数据在内存中变化，了解程序运行的一些细节。<br>但是对于PHP学习了很久，很少见到关于这一块的资料和介绍。通常在php程序中调试使用echo、print_r或者var_dump已经足够了，也特别的方便对于变量的类型、数组结构均能直接打印，但是对于一些复杂的程序和业务，或者想跟踪框架运行的流畅，仅仅使用上面几个命令就有些捉襟见肘了。下面说下php下的断点调试的配置。</p>
-</blockquote>
-<h2 id="准备">准备</h2><ul>
-<li>环境：wamp（phpstudy搭建）</li>
-<li>IDE： phpstorm</li>
-<li>插件： xdebug</li>
-</ul>
-<blockquote>
-<p>主要说下Windows下的配置，Linux下主要增加编译的过程，其余基本一致</p>
-</blockquote>
-<h2 id="安装xdebug插件">安装xdebug插件</h2><p><img src="https://ooo.0o0.ooo/2016/03/02/56d70a5c0da30.png" alt="2d086265-8045-459a-bfa4-e0bf3732e963.png"></p>
-<ol>
-<li><p>查看phpinfo中php版本，注意是否是线程安全，这两点，然后到 <a href="https://xdebug.org/download.php" target="_blank" rel="external">https://xdebug.org/download.php</a> 下载自己版本对应的dll文件。<br><code>其中TS表示Thread Safety 为 enable</code><br><img src="https://ooo.0o0.ooo/2016/03/02/56d70a5c7ad40.png" alt="91c48e9c-eb7c-43c2-a7f7-e7e68df234de.png"></p>
-</li>
-<li><p>安装xdebug扩展。将下载的dll文件放到php安装目录下的<code>ext</code>文件夹。</p>
-</li>
-<li><p>打开php.ini，在最底部添加如下配置</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[XDebug]&#10;zend_extension=&#34;&#20320;&#30340;&#19979;&#36733;&#30340;xdebug dll&#25991;&#20214;&#30340;&#36335;&#24452;&#34;&#10;xdebug.remote_enable = 1&#10;xdebug.remote_autostart = on&#10;xdebug.remote_port=9000</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重启apache查看phpinfo验证是否成功。<br><img src="https://ooo.0o0.ooo/2016/03/02/56d70a9cc20ef.png" alt="38626f19-9223-42b1-be53-f0ffdfd82778.png"></p>
-</li>
-</ol>
-<p>可以看到已经phpinfo中已经显示，安装成功。</p>
-<h2 id="配置phpstorm">配置phpstorm</h2><p>打开phpstorm的<code>File-&gt;Settings-&gt;Languages-&gt;PHP-&gt;Debug</code>，填入我们在php.ini中写入的端口号。(默认就是9000)<br><img src="https://ooo.0o0.ooo/2016/03/02/56d70af3000cc.png" alt=""></p>
-<h2 id="测试调试">测试调试</h2><ol>
-<li>打开phpstorm右上角的监听调试标示。</li>
-<li>点击需要调试的代码行号，设置断点。<br><img src="https://ooo.0o0.ooo/2016/03/02/56d70b6eac2e4.png" alt="ca6c4444-0c0d-4d55-9830-09f07257eabb.png"></li>
-<li>浏览器访问运行程序，phpstorm中弹出接受调试的对话框，点击<code>Accept</code>。<br><img src="https://ooo.0o0.ooo/2016/03/02/56d70b6f6f379.png" alt="284890ae-388c-408a-8b86-952850a21bbb.png"></li>
-<li>可以看到程序已经停留在我们设置的断点中，当前的数据一览无余。包括内存中的地址变化。<br><img src="https://ooo.0o0.ooo/2016/03/02/56d70b6fa3ee3.jpg" alt="e558b3ac-5667-41b2-a806-5632dda93ff4.jpg"></li>
-</ol>
-<h2 id="后续">后续</h2><p>xdebug的功能不仅仅局限于断点调试，对于php的性能分析也有很大的功能。大家用的时候慢慢探索吧。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://blog.micookie.net/2014/12/20/PHP断点调试(Xdebug配置)/" data-id="cilb1z6y200106kk5fdbvtjrt" class="article-share-link" data-share="baidu" data-title="php断点调试(Xdebug配置)">分享到</a>
-      
-
-      
-        <a href="http://blog.micookie.net/2014/12/20/PHP断点调试(Xdebug配置)/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Yii日志的使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/11/07/Yii日志的使用/" class="article-date">
-  <time datetime="2014-11-06T16:00:00.000Z" itemprop="datePublished">2014-11-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/07/Yii日志的使用/">Yii::log()和Yii::trace()，日志的使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="首先在config文件中设置log">首先在config文件中设置log</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">'log'</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'class'</span>=&gt;<span class="string">'CLogRouter'</span>,</span><br><span class="line">    <span class="string">'routes'</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">        <span class="keyword">array</span>(</span><br><span class="line">            <span class="string">'class'</span>=&gt;<span class="string">'CFileLogRoute'</span>,<span class="comment">//这表示把日志输出到文件中，下方有详细的</span></span><br><span class="line">            <span class="string">'levels'</span>=&gt;<span class="string">'error, warning'</span>,</span><br><span class="line">        ),</span><br><span class="line">        <span class="keyword">array</span>(</span><br><span class="line">            <span class="string">'class'</span>=&gt;<span class="string">'CWebLogRoute'</span>,<span class="comment">//这表示把日志显示在网页下方，下方有详细的</span></span><br><span class="line">            <span class="string">'levels'</span>=&gt;<span class="string">'trace, info, error, warning'</span>,</span><br><span class="line">            <span class="string">'categories'</span>=&gt;<span class="string">'cool.*,system.db.*'</span>,</span><br><span class="line">        ),</span><br><span class="line">    ),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
-<h3 id="日志路由class：">日志路由class：</h3><p>CDbLogRoute: 将信息保存到数据库的表中。<br>CEmailLogRoute: 发送信息到指定的 Email 地址。<br>CFileLogRoute: 保存信息到应用程序 runtime 目录中的一个文件中。<br>CWebLogRoute: 将 信息 显示在当前页面的底部。<br>CProfileLogRoute: 在页面的底部显示概述（profiling）信息。</p>
-<h3 id="信息级别levels：">信息级别levels：</h3><p>trace: 这是在 Yii::trace 中使用的级别。它用于在开发中 跟踪程序的执行流程。<br>info: 这个用于记录普通的信息。<br>profile: 这个是性能概述（profile）。下面马上会有更详细的说明。<br>warning: 这个用于警告（warning）信息。<br>error: 这个用于致命错误（fatal error）信息。</p>
-<h3 id="分类categories：">分类categories：</h3><p>可以自定义，但在输出函数里要对应才会被写入日志里<br>（例如上边写的是 cool.<em> 和 system.db.</em> ，就会把相应分类的信息写入日志，请结合下文来理解）</p>
-<p>设置完了，就可以用写入日志的函数来记录了：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">Yii</span>::<span class="function">trace</span>(<span class="string">'My log message.'</span>,<span class="string">'cool.pd'</span>);</span><br><span class="line"><span class="comment">//cool.pd属于cool.*分类，所以会被写入日志</span></span><br><span class="line"><span class="attribute">Yii</span>::<span class="function">log</span>(<span class="string">'My log message.'</span>,<span class="string">'info'</span>,<span class="string">'cool.collectpd'</span>);</span><br><span class="line"><span class="comment">//log定义级别为info，结合上文，第一个logclass会忽略，不会被写入文件，但会被第二个logclass接收，写入日志在网络下方显示。</span></span><br></pre></td></tr></table></figure></p>
-<p>trace()和log()的区别：<br>trace()只会在调试模式下生效，即开启debug的时候<br>trace()不分level，但log()能设置levels参数</p>
-<p>更详细可参考官方文件：<a href="http://www.yiiframework.com/doc/guide/1.1/zh_cn/topics.logging" target="_blank" rel="external">http://www.yiiframework.com/doc/guide/1.1/zh_cn/topics.logging</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://blog.micookie.net/2014/11/07/Yii日志的使用/" data-id="cilb1z6xn000q6kk5t18qi5no" class="article-share-link" data-share="baidu" data-title="Yii::log()和Yii::trace()，日志的使用">分享到</a>
-      
-
-      
-        <a href="http://blog.micookie.net/2014/11/07/Yii日志的使用/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Yii/">Yii</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
   
     <article id="post-wdlinux增加php的sockets模块" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">

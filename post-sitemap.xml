@@ -7,6 +7,20 @@
     </url>
 
     <url>
+        <loc>http://blog.micookie.net/2014/10/12/PHP%E9%A2%9C%E8%89%B2%E6%9B%BF%E6%8D%A2%EF%BC%8C%E7%99%BD%E8%89%B2%E6%9B%BF%E6%8D%A2%E9%80%8F%E6%98%8E%E8%89%B2/</loc>
+        <lastmod>2016-03-02T16:27:11.151Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.micookie.net/2014/10/12/wdlinux%E5%A2%9E%E5%8A%A0php%E7%9A%84sockets%E6%A8%A1%E5%9D%97/</loc>
+        <lastmod>2016-03-02T16:24:20.244Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
         <loc>http://blog.micookie.net/2016/02/23/Windows%E9%AB%98%E6%95%88%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/</loc>
         <lastmod>2016-03-02T15:57:11.596Z</lastmod>
         <changefreq>weekly</changefreq>

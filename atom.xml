@@ -362,4 +362,70 @@ Initialize Engine: failed
     
   </entry>
   
+  <entry>
+    <title><![CDATA[wdlinux增加php的sockets模块]]></title>
+    <link href="http://blog.micookie.net/2014/10/12/wdlinux%E5%A2%9E%E5%8A%A0php%E7%9A%84sockets%E6%A8%A1%E5%9D%97/"/>
+    <id>http://blog.micookie.net/2014/10/12/wdlinux增加php的sockets模块/</id>
+    <published>2014-10-11T16:00:00.000Z</published>
+    <updated>2016-03-02T16:24:20.244Z</updated>
+    <content type="html"><![CDATA[<p>在wdlinux中PHP的默认没有加载sockets模块，在使用websocket通信时会报一个错误</p>
+<p>  undefined function socket_create();    缺少scocket通信模块。</p>
+<p>系统是centos6.3 64位</p>
+<p>首先去取得wdlinux的安装包命令如下：</p>
+<p> wget <a href="http://dl.wdlinux.cn:5180/lanmp_laster.tar.gz" target="_blank" rel="external">http://dl.wdlinux.cn:5180/lanmp_laster.tar.gz</a> </p>
+<p>解压</p>
+<p>  tar -zxvf lanmp_laster.tar.gz  进入目录cdlanmp_laster看到有两个和php有关的包</p>
+<p>我们继续解压</p>
+<p>  tar -zxvf php-5.2.17.tar.gz进入目录</p>
+<p>  cd php-5.2.17进入扩展目录cd ext</p>
+<p>看到sockets目录</p>
+<p>我们将其拷贝到以下目录</p>
+<p>  cp -r sockets//www/wdlinux/apache_php-5.2.17/include/php/ext/</p>
+<p>进入目录</p>
+<p>  cd  /www/wdlinux/apache_php-5.2.17/include/php/ext/sockets</p>
+<p>开始编译</p>
+<p>执行：</p>
+<p>  /www/wdlinux/php/bin/phpize  ./configure–enable-sockets –with-php-config=/www/wdlinux/php/bin/php-config</p>
+<p>  make</p>
+<p>  makeinstall</p>
+<p>修改配置文件</p>
+<p>  vim /www/wdlinux/etc/php.ini       在最后增加</p>
+<p>  extension=”/usr/local/php/lib/php/extensions/no-debug-non-zts-20060613/sockets.so” </p>
+<p>重启服务</p>
+<p>  service httpd restart</p>
+<p> 使用phpinfo();查看扩展是否安装成功</p>
+<p> 到此结束。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在wdlinux中PHP的默认没有加载sockets模块，在使用websocket通信时会报一个错误</p>
+<p>  undefined function socket_create();    缺少scocket通信模块。</p>
+<p>系统是centos6.3 64位]]>
+    </summary>
+    
+      <category term="PHP" scheme="http://blog.micookie.net/tags/PHP/"/>
+    
+      <category term="PHP" scheme="http://blog.micookie.net/categories/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[PHP颜色替换，白色替换透明色]]></title>
+    <link href="http://blog.micookie.net/2014/10/12/PHP%E9%A2%9C%E8%89%B2%E6%9B%BF%E6%8D%A2%EF%BC%8C%E7%99%BD%E8%89%B2%E6%9B%BF%E6%8D%A2%E9%80%8F%E6%98%8E%E8%89%B2/"/>
+    <id>http://blog.micookie.net/2014/10/12/PHP颜色替换，白色替换透明色/</id>
+    <published>2014-10-11T16:00:00.000Z</published>
+    <updated>2016-03-02T16:27:11.151Z</updated>
+    <content type="html"><![CDATA[<p>PHP颜色替换，根据自己的需求对替换的颜色进行更改</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">&lt;?</span></span><br><span class="line"><span class="variable">$o_pic</span> = <span class="string">'test1.png'</span>;</span><br><span class="line"><span class="comment">//要处理的色阶起始值</span></span><br><span class="line"><span class="variable">$begin_r</span> = <span class="number">255</span>;</span><br><span class="line"><span class="variable">$begin_g</span> = <span class="number">255</span>;</span><br><span class="line"><span class="variable">$begin_b</span> = <span class="number">255</span>;</span><br><span class="line"><span class="keyword">list</span>(<span class="variable">$src_w</span>, <span class="variable">$src_h</span>, <span class="variable">$src_type</span>) = getimagesize(<span class="variable">$o_pic</span>); <span class="comment">// 获取原图像信息</span></span><br><span class="line"><span class="variable">$target_im</span> = imagecreatetruecolor(<span class="variable">$src_w</span>, <span class="variable">$src_h</span>); <span class="comment">//新图</span></span><br><span class="line"><span class="variable">$src_im</span> = imagecreatefrompng(<span class="variable">$o_pic</span>);</span><br><span class="line">imagecopymerge(<span class="variable">$target_im</span>, <span class="variable">$src_im</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="variable">$src_w</span>, <span class="variable">$src_h</span>, <span class="number">100</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$x</span> = <span class="number">0</span>; <span class="variable">$x</span> &lt; <span class="variable">$src_w</span>; <span class="variable">$x</span>++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="variable">$y</span> = <span class="number">0</span>; <span class="variable">$y</span> &lt; <span class="variable">$src_h</span>; <span class="variable">$y</span>++) &#123;</span><br><span class="line">        <span class="variable">$rgb</span> = imagecolorat(<span class="variable">$src_im</span>, <span class="variable">$x</span>, <span class="variable">$y</span>);</span><br><span class="line">        <span class="variable">$r</span> = (<span class="variable">$rgb</span> &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>;</span><br><span class="line">        <span class="variable">$g</span> = (<span class="variable">$rgb</span> &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>;</span><br><span class="line">        <span class="variable">$b</span> = <span class="variable">$rgb</span> &amp; <span class="number">0xFF</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$r</span> &gt;= <span class="variable">$begin_r</span> &amp;&amp; <span class="variable">$g</span> &gt;= <span class="variable">$begin_g</span> &amp;&amp; <span class="variable">$b</span> &gt;= <span class="variable">$begin_b</span>) &#123;</span><br><span class="line">            imagecolortransparent(<span class="variable">$target_im</span>, imagecolorallocate(<span class="variable">$target_im</span>, <span class="variable">$r</span>, <span class="variable">$g</span>, <span class="variable">$b</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">imagepng(<span class="variable">$target_im</span>);</span><br><span class="line">imagedestroy(<span class="variable">$target_im</span>);</span><br><span class="line"><span class="preprocessor">?&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>PHP颜色替换，根据自己的需求对替换的颜色进行更改</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class]]>
+    </summary>
+    
+      <category term="PHP" scheme="http://blog.micookie.net/tags/PHP/"/>
+    
+      <category term="PHP" scheme="http://blog.micookie.net/categories/PHP/"/>
+    
+  </entry>
+  
 </feed>
