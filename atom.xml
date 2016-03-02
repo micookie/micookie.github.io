@@ -287,6 +287,56 @@ Initialize Engine: failed
   </entry>
   
   <entry>
+    <title><![CDATA[php断点调试(Xdebug配置)]]></title>
+    <link href="http://blog.micookie.net/2014/12/20/PHP%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95(Xdebug%E9%85%8D%E7%BD%AE)/"/>
+    <id>http://blog.micookie.net/2014/12/20/PHP断点调试(Xdebug配置)/</id>
+    <published>2014-12-19T16:00:00.000Z</published>
+    <updated>2016-03-02T15:48:05.662Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>在最开始学习C语言的时候，断点调试是基本要学习使用的，一方面是方便程序调试；二是能数据在内存中变化，了解程序运行的一些细节。<br>但是对于PHP学习了很久，很少见到关于这一块的资料和介绍。通常在php程序中调试使用echo、print_r或者var_dump已经足够了，也特别的方便对于变量的类型、数组结构均能直接打印，但是对于一些复杂的程序和业务，或者想跟踪框架运行的流畅，仅仅使用上面几个命令就有些捉襟见肘了。下面说下php下的断点调试的配置。</p>
+</blockquote>
+<h2 id="准备">准备</h2><ul>
+<li>环境：wamp（phpstudy搭建）</li>
+<li>IDE： phpstorm</li>
+<li>插件： xdebug</li>
+</ul>
+<blockquote>
+<p>主要说下Windows下的配置，Linux下主要增加编译的过程，其余基本一致</p>
+</blockquote>
+<h2 id="安装xdebug插件">安装xdebug插件</h2><p><img src="https://ooo.0o0.ooo/2016/03/02/56d70a5c0da30.png" alt="2d086265-8045-459a-bfa4-e0bf3732e963.png"></p>
+<ol>
+<li><p>查看phpinfo中php版本，注意是否是线程安全，这两点，然后到 <a href="https://xdebug.org/download.php" target="_blank" rel="external">https://xdebug.org/download.php</a> 下载自己版本对应的dll文件。<br><code>其中TS表示Thread Safety 为 enable</code><br><img src="https://ooo.0o0.ooo/2016/03/02/56d70a5c7ad40.png" alt="91c48e9c-eb7c-43c2-a7f7-e7e68df234de.png"></p>
+</li>
+<li><p>安装xdebug扩展。将下载的dll文件放到php安装目录下的<code>ext</code>文件夹。</p>
+</li>
+<li><p>打开php.ini，在最底部添加如下配置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[XDebug]&#10;zend_extension=&#34;&#20320;&#30340;&#19979;&#36733;&#30340;xdebug dll&#25991;&#20214;&#30340;&#36335;&#24452;&#34;&#10;xdebug.remote_enable = 1&#10;xdebug.remote_autostart = on&#10;xdebug.remote_port=9000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启apache查看phpinfo验证是否成功。<br><img src="https://ooo.0o0.ooo/2016/03/02/56d70a9cc20ef.png" alt="38626f19-9223-42b1-be53-f0ffdfd82778.png"></p>
+</li>
+</ol>
+<p>可以看到已经phpinfo中已经显示，安装成功。</p>
+<h2 id="配置phpstorm">配置phpstorm</h2><p>打开phpstorm的<code>File-&gt;Settings-&gt;Languages-&gt;PHP-&gt;Debug</code>，填入我们在php.ini中写入的端口号。(默认就是9000)<br><img src="https://ooo.0o0.ooo/2016/03/02/56d70af3000cc.png" alt=""></p>
+<h2 id="测试调试">测试调试</h2><ol>
+<li>打开phpstorm右上角的监听调试标示。</li>
+<li>点击需要调试的代码行号，设置断点。<br><img src="https://ooo.0o0.ooo/2016/03/02/56d70b6eac2e4.png" alt="ca6c4444-0c0d-4d55-9830-09f07257eabb.png"></li>
+<li>浏览器访问运行程序，phpstorm中弹出接受调试的对话框，点击<code>Accept</code>。<br><img src="https://ooo.0o0.ooo/2016/03/02/56d70b6f6f379.png" alt="284890ae-388c-408a-8b86-952850a21bbb.png"></li>
+<li>可以看到程序已经停留在我们设置的断点中，当前的数据一览无余。包括内存中的地址变化。<br><img src="https://ooo.0o0.ooo/2016/03/02/56d70b6fa3ee3.jpg" alt="e558b3ac-5667-41b2-a806-5632dda93ff4.jpg"></li>
+</ol>
+<h2 id="后续">后续</h2><p>xdebug的功能不仅仅局限于断点调试，对于php的性能分析也有很大的功能。大家用的时候慢慢探索吧。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<blockquote>
+<p>在最开始学习C语言的时候，断点调试是基本要学习使用的，一方面是方便程序调试；二是能数据在内存中变化，了解程序运行的一些细节。<br>但是对于PHP学习了很久，很少见到关于这一块的资料和介绍。通常在php程序中调试使用echo、print_r或者va]]>
+    </summary>
+    
+      <category term="PHP" scheme="http://blog.micookie.net/tags/PHP/"/>
+    
+      <category term="PHP" scheme="http://blog.micookie.net/categories/PHP/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Yii::log()和Yii::trace()，日志的使用]]></title>
     <link href="http://blog.micookie.net/2014/11/07/Yii%E6%97%A5%E5%BF%97%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://blog.micookie.net/2014/11/07/Yii日志的使用/</id>
