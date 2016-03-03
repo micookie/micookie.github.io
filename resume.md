@@ -11,8 +11,9 @@
  - 工作年限：1.5年
  - 技术博客：http://blog.micookie.net
  - Github：http://github.com/micookie
+ -  微博：http://www.weibo.com/u/5085399578
  - 期望职位：PHP开发
- - 期望薪资：月薪10k~15k(特别喜欢公司可以浮动)
+ - 期望薪资：月薪10k~15k
  - 期望城市：北京
 
 ## 教育经历
