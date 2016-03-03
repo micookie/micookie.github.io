@@ -12,7 +12,7 @@
  - 技术博客：http://blog.micookie.net
  - Github：http://github.com/micookie
  - 期望职位：PHP开发
- - 期望薪资：月薪9k~15k
+ - 期望薪资：月薪10k~15k(特别喜欢公司可以浮动)
  - 期望城市：北京
 
 ## 教育经历
@@ -75,7 +75,8 @@ https://github.com/micookie/Android-Survey
 
 ### 技术文章
 
-- [让PHP也用上断点调试（PHP xdebug配置）](http://blog.micookie.net/2014/12/20/PHP%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95(Xdebug%E9%85%8D%E7%BD%AE)
+- [让PHP也用上断点调试（PHP xdebug配置）http://blog.micookie.net/2014/12/20/PHP%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95(Xdebug%E9%85%8D%E7%BD%AE](http://blog.micookie.net/2014/12/20/PHP%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95(Xdebug%E9%85%8D%E7%BD%AE)
+- [Windows高效工具推荐http://blog.micookie.net/2016/02/23/Windows%E9%AB%98%E6%95%88%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/](http://blog.micookie.net/2016/02/23/Windows%E9%AB%98%E6%95%88%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/)
 
 ## 个人评价
 
