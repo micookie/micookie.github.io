@@ -26,7 +26,7 @@
 - 语言：PHP/JS/Android (根据能力程度排序)
 - Web框架：ThinkPHP/Yii
 - 前   端：Bootstrap/Easyui/jQuery/Ajax
-- 开发环境：lnmp、wamp
+- 操作系统：熟悉Linux系统，常用命令使用，lnmp环境搭建
 - 数据库相关：MySQL/PDO/Redis
 - 版本管理、自动化部署工具：Svn/Git/Composer；
 - 云和开放平台：SAE/微信应用开发
@@ -84,7 +84,7 @@ https://github.com/micookie/Android-Survey
 
 ## 个人评价
 
-有一颗热爱折腾的心，对于新生事物充满好奇。对于计算机和电子产品有强烈的兴趣。享受编程带来的乐趣，尽力追求代码的优雅，并且希望能一直坚持下去。
+善于钻研，拥有一颗向上进步的心，对于新生事物充满好奇。对于计算机和电子产品有强烈的兴趣。享受编程带来的乐趣，尽力追求代码的优雅，并且希望能一直坚持下去。
 
 
 ## 致谢
